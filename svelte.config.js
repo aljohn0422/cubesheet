@@ -3,25 +3,21 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://svelte.dev/docs/kit/integrations
-	// for more information about preprocessors
 	preprocess: vitePreprocess(),
-
 	kit: {
 		adapter: adapter({
-			// Output directory (defaults to 'build')
-			out: 'build',
-			// Optional: Ensure static assets are pre-rendered
+			pages: 'build',
+			assets: 'build',
+			fallback: 'index.html',
 			precompress: false,
-			// Ensure all routes are pre-rendered as static files
-			fallback: null
+			strict: true
 		}),
 		paths: {
-			base: process.env.BASE_PATH || '' // Use BASE_PATH from environment
+			base: process.env.NODE_ENV === 'production' ? '/cubesheet' : ''
 		},
-		alias: {
-			"@/*": "./path/to/lib/*",
-		},
+		prerender: {
+			entries: ['*']
+		}
 	}
 };
 

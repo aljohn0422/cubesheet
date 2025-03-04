@@ -7,6 +7,7 @@
     import { breadcrumbs } from "../lib/state/shared.svelte";
 
     let { children } = $props();
+    export const prerender = true;
 </script>
 
 <Sidebar.Provider>
