@@ -1,0 +1,1 @@
+export const breadcrumbs = $state<{ paths: string[] }>({ paths: [] });
