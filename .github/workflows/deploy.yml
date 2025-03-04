@@ -8,8 +8,8 @@ jobs:
   build_site:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4 # Updated to v4 (latest as of 2025)
+      - uses: actions/setup-node@v4 # Updated to v4
         with:
           node-version: 20
           cache: "npm"
@@ -20,12 +20,13 @@ jobs:
           BASE_PATH: "/cubesheet"
         run: |
           npm run build
-          touch build/.nojekyll
+          mkdir -p build && touch build/.nojekyll
+      - name: Verify Build Output
+        run: ls -la build/
       - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v2 # Changed from upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3 # Updated to v3 (latest as of 2025)
         with:
           path: "build/"
-          # include-hidden-files is not a valid option here; remove it
 
   deploy:
     needs: build_site
@@ -39,4 +40,4 @@ jobs:
     steps:
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v2 # Updated to v2 (check compatibility)
