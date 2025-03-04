@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: "npm"
       - name: Install dependencies
         run: npm install
@@ -22,10 +22,10 @@ jobs:
           npm run build
           touch build/.nojekyll
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v4 # Updated to v4
+        uses: actions/upload-artifact@v4
         with:
           path: "build/"
-          include-hidden-files: true # Ensures .nojekyll is included
+          include-hidden-files: true
 
   deploy:
     needs: build_site
