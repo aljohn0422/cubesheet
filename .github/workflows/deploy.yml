@@ -8,8 +8,8 @@ jobs:
   build_site:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4 # Updated to v4 (latest as of 2025)
-      - uses: actions/setup-node@v4 # Updated to v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "npm"
@@ -24,7 +24,8 @@ jobs:
       - name: Verify Build Output
         run: ls -la build/
       - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v3 # Updated to v3 (latest as of 2025)
+        id: upload-artifact # Added an ID for reference
+        uses: actions/upload-pages-artifact@v3
         with:
           path: "build/"
 
@@ -40,4 +41,4 @@ jobs:
     steps:
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v2 # Updated to v2 (check compatibility)
+        uses: actions/deploy-pages@v2
