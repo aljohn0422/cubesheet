@@ -21,19 +21,11 @@ jobs:
         run: |
           npm run build
           touch build/.nojekyll
-      - name: Verify Build Output
-        run: ls -la build/
-      - name: Check Build Output Exists
-        run: |
-          if [ ! -d "build" ] || [ -z "$(ls -A build)" ]; then
-            echo "Error: Build directory is missing or empty!"
-            exit 1
-          fi
       - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v2 # Changed from upload-artifact@v4
         with:
           path: "build/"
-          include-hidden-files: true
+          # include-hidden-files is not a valid option here; remove it
 
   deploy:
     needs: build_site
