@@ -1,4 +1,5 @@
 <script lang="ts" module>
+    import { base } from "$app/paths";
     const data = {
         navMain: [
             {
