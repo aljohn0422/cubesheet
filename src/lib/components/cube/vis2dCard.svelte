@@ -4,7 +4,13 @@
     import Skeleton from "../ui/skeleton/skeleton.svelte";
 
     import PlayerCard from "./playerCard.svelte";
-    let { alg, bg = "t", stage = undefined, name = undefined } = $props();
+    let {
+        alg,
+        bg = "t",
+        stage = undefined as string | undefined,
+        name = undefined as string | undefined,
+        arrow = undefined as string | undefined,
+    } = $props();
     let url = $state("");
     let isLoading = $state(true);
 
@@ -17,6 +23,12 @@
             bg: bg,
             case: alg,
             stage: stage,
+            arw: arrow
+                ? arrow
+                      .split(",")
+                      .map((arw) => `${arw}-s8-black`)
+                      .join(",")
+                : undefined,
         };
 
         const searchParams = new URLSearchParams();

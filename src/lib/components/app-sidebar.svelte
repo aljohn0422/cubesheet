@@ -10,10 +10,10 @@
                         title: "OLL",
                         url: "/333cfop/oll",
                     },
-                    // {
-                    //     title: "PLL",
-                    //     url: "/333cfop/pll",
-                    // },
+                    {
+                        title: "PLL",
+                        url: "/333cfop/pll",
+                    },
                 ],
             },
         ],
