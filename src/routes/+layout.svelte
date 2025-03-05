@@ -12,7 +12,7 @@
 
 <Sidebar.Provider>
     <AppSidebar />
-    <main>
+    <main class="w-full text-slate-700">
         <Sidebar.Inset>
             <header
                 class="flex h-16 shrink-0 items-center gap-2 border-b mb-3 sticky top-0 bg-white z-10"
@@ -36,7 +36,7 @@
                     </Breadcrumb.Root>
                 </div>
             </header>
-            <div class="px-6 xl:px-24 2xl:px-36 py-4 text-slate-700">
+            <div class="px-6 sm:px-12 lg:px-24 2xl:px-36 py-4">
                 {@render children?.()}
             </div>
         </Sidebar.Inset>
