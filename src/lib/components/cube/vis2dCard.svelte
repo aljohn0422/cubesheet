@@ -91,7 +91,7 @@
                             >
                         </p>
                     </Dialog.Trigger>
-                    <Dialog.Content class="w-80 flex justify-center">
+                    <Dialog.Content class="w-80 flex justify-center rounded-lg">
                         <PlayerCard alg={actualAlg} />
                     </Dialog.Content>
                 </Dialog.Root>

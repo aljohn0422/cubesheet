@@ -101,7 +101,7 @@
                 {
                     alg: "R U' R' U' R U R D R' U' R D' R' U2 R'",
                     name: "Ra",
-                    arrow: "U0U6,U6U0,U3U7,U7U3",
+                    arrow: "U2U9,U9U2,U1U3,U3U1",
                 },
                 {
                     alg: "(R U R' U) (R U R' F' R U R' U' R' F R2 U' R') U2 R U' R'",
