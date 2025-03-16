@@ -71,7 +71,6 @@
                                 color="#475569"
                             />
                         </Button>
-                        <!-- <Settings2 fill="#475569" size={20} color="#475569" /> -->
                     </DropdownMenu.Trigger>
                     <DropdownMenu.Content>
                         <DropdownMenu.Group>

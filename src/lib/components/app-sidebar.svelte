@@ -7,6 +7,10 @@
                 url: "",
                 items: [
                     {
+                        title: "F2L",
+                        url: "/333cfop/f2l",
+                    },
+                    {
                         title: "OLL",
                         url: "/333cfop/oll",
                     },

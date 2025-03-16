@@ -7,9 +7,13 @@
     let {
         alg,
         bg = "t",
+        view = "plan",
         stage = undefined as string | undefined,
         name = undefined as string | undefined,
         arrow = undefined as string | undefined,
+        rotation = "",
+        fc = undefined as string | undefined,
+        cc = "black",
     } = $props();
     let url = $state("");
     let isLoading = $state(true);
@@ -19,16 +23,19 @@
         const params = {
             size: 144,
             fmt: "png",
-            view: "plan",
+            view: view,
             bg: bg,
             case: alg,
             stage: stage,
+            r: rotation,
             arw: arrow
                 ? arrow
                       .split(",")
                       .map((arw) => `${arw}-s8-black`)
                       .join(",")
                 : undefined,
+            fc: fc ? fc : undefined,
+            cc: cc,
         };
 
         const searchParams = new URLSearchParams();
@@ -57,6 +64,9 @@
     }
 
     const actualAlg = $derived(getActualAlg(alg));
+    const stickerMapping: Record<string, string> = {
+        f2l: "F2L",
+    };
 </script>
 
 <Card.Root>
