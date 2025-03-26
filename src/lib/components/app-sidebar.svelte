@@ -20,6 +20,16 @@
                     },
                 ],
             },
+            {
+                title: "3x3x3 Advanced",
+                url: "",
+                items: [
+                    {
+                        title: "F2L",
+                        url: "/333advanced/f2l",
+                    },
+                ],
+            },
         ],
     };
 </script>
