@@ -20,6 +20,5 @@ export const PLAYER_MASKS: Record<string, string> = {
     f2l: "EDGES:----IIII----,CORNERS:----IIII,CENTERS:------",
     // 前兩層原色，頂層只顯示黃色
     oll: "EDGES:----OOOO----,CORNERS:----OOOO,CENTERS:------",
-    // 頂層原色，前兩層變暗
-    ll: "EDGES:DDDD----DDDD,CORNERS:DDDD----,CENTERS:------",
+    // ll（PLL）不加遮罩：動畫全部貼紙原色顯示，只有 2D 圖會用到 stage
 };

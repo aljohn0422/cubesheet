@@ -151,7 +151,7 @@ Confirmed rejection: the earlier "boxed reference manual" world (coloured divide
 A monochrome ink-and-paper palette with one error red; all chroma comes from the cube stickers.
 
 ### Primary
-- **Press Ink** (#111111, `--ink: 17 17 17`): all text, every structural rule, the active index row fill, the primary button fill, focus outlines, text selection background, and the player's current-move underline. Exposed to Tailwind as `ink` with alpha (`rgb(var(--ink) / <alpha>)`); the scrollbar thumb uses ink at 35%, the face-down hatch at 8%, the current-move tint at 12%.
+- **Press Ink** (#111111, `--ink: 17 17 17`): all text, every structural rule, the active index row fill, the primary button fill, focus outlines, and text selection background. Exposed to Tailwind as `ink` with alpha (`rgb(var(--ink) / <alpha>)`); the scrollbar thumb uses ink at 35%, the face-down hatch at 8%, the current-move tint at 12%.
 
 ### Secondary
 - **Errata Red** (#c4301a): errors only. The one current use is the cube diagram's failure state (red 1px frame and "圖片無法顯示"). shadcn's `--destructive` is bound to the same hue.
@@ -241,7 +241,7 @@ Rounded, ink-ruled, 44px tall.
 The unit of the sheet. The whole cell is a dialog trigger: 88px VisualCube diagram left, then case name (15px bold), algorithm (19px semibold, grouping chunks never wrap internally), move count (13px grey). Hover wash grey, pressed press grey. Alternatives hang below as 44px rows divided by a grey hairline: "或", the alternative at 17px, its count.
 
 ### Player Dialog
-Max 24rem, ink border, dialog lift, title over a 2px ink rule. A 224px twisty-player, a control row (restart, step back, play/pause, step forward), the alg viewer between ink rules at 19px with cubing.js's blue current-move marker rethemed to an ink 12% tint with a 2px ink underline, then the speed control.
+Max 24rem, ink border, dialog lift, title over a 2px ink rule. A 224px twisty-player, a control row (restart, step back, play/pause, step forward), the alg viewer between ink rules at 19px with cubing.js's blue current-move marker rethemed to a grey tint only (no underline), then the speed control. PLL plays with no sticker mask, so every sticker shows its real colour; the F2L and OLL masks stay.
 
 ### Navigation
 - **Index:** shared by the desktop column and the mobile sheet. 首頁 and 記號說明 rows, then one block per group that has at least one listed chapter: a 13px grey semibold group label, an ink-ruled list of 44px rows with the title and a 13px grey count. Active row is ink-filled with paper text.

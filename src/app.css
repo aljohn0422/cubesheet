@@ -72,11 +72,10 @@
 
 /*
  * 3D 播放器「目前這一步」：cubing.js 在 light DOM 的那一步元素加上這個 class，
- * 裡面預設的藍色底用灰階濾掉，再補一條墨色底線。
+ * 裡面預設的藍色底用灰階濾掉，只留灰色底色提醒。
  */
 twisty-alg-viewer .twisty-alg-current-move {
   filter: grayscale(1);
-  box-shadow: inset 0 -2px 0 rgb(var(--ink));
 }
 
 /* 列印：頁首、目錄、段落列用 print:hidden 隱藏；格子不要被分頁切斷 */
