@@ -72,6 +72,16 @@ export const navGroups: NavGroup[] = [
             },
         ],
     },
+    {
+        title: "三階 盲解",
+        items: [
+            {
+                title: "盲解練習",
+                url: "/333bld/practice",
+                summary: "打亂找循環、字母配對、貼紙辨認。",
+            },
+        ],
+    },
 ];
 
 /** 依路徑找出目前章節與其所屬群組；首頁或找不到時回傳 undefined */

@@ -50,12 +50,19 @@
   }
 
   /*
-   * 表格線網格：外框只畫左、上，每格畫右、下，格線不會重疊加粗。
+   * 表格線網格：圓角外框（.ruled-frame）包住網格（.ruled-grid）。
+   * 每格只畫右、下兩條線，格線不會重疊加粗；網格向右、下各多出 1px，
+   * 讓最後一欄、最後一列的線藏到外框底下被裁掉，外框四邊都只有一條線。
    * 用在公式卡片的格子與插圖。
    */
+  .ruled-frame {
+    border: 1px solid rgb(var(--ink));
+    border-radius: theme("borderRadius.xl");
+    overflow: hidden;
+  }
   .ruled-grid {
-    border-left: 1px solid rgb(var(--ink));
-    border-top: 1px solid rgb(var(--ink));
+    margin-right: -1px;
+    margin-bottom: -1px;
   }
   .ruled-grid > * {
     border-right: 1px solid rgb(var(--ink));

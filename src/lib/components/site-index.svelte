@@ -10,20 +10,26 @@
     const isActive = (url: string) => page.url.pathname === url;
 
     const row =
-        "flex min-h-11 items-center justify-between gap-3 px-2 text-[15px] transition-colors";
+        "flex min-h-11 items-center justify-between gap-3 rounded-lg px-2 text-[15px] transition-colors";
     const activeRow = "bg-ink font-semibold text-paper";
     const idleRow = "hover:bg-neutral-100";
 </script>
 
 <nav aria-label="目錄" class="text-ink">
-    <a
-        href="/"
-        onclick={onnavigate}
-        class="{row} border-t border-ink {isActive('/') ? activeRow : idleRow}"
-        aria-current={isActive("/") ? "page" : undefined}>首頁</a
-    >
-
-    <a href={anchorHref("記號說明", "/")} onclick={onnavigate} class="{row} border-y border-t-neutral-300 border-b-ink {idleRow}">記號說明</a>
+    <!-- 線畫在外層，圓角的列只負責底色，線才不會跟著彎 -->
+    <div class="divide-y divide-neutral-300 border-y border-ink">
+        <div>
+            <a
+                href="/"
+                onclick={onnavigate}
+                class="{row} {isActive('/') ? activeRow : idleRow}"
+                aria-current={isActive("/") ? "page" : undefined}>首頁</a
+            >
+        </div>
+        <div>
+            <a href={anchorHref("記號說明", "/")} onclick={onnavigate} class="{row} {idleRow}">記號說明</a>
+        </div>
+    </div>
 
     <!-- 還沒有任何頁面的分組（全部未收錄）不顯示在目錄 -->
     {#each navGroups.filter((g) => g.items.some((item) => item.url)) as group (group.title)}

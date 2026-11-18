@@ -15,7 +15,7 @@
     </p>
     <a
         href="/"
-        class="mt-8 inline-flex h-11 items-center bg-ink px-5 text-[15px] font-semibold text-paper hover:bg-neutral-800"
+        class="mt-8 inline-flex h-11 items-center rounded-lg bg-ink px-5 text-[15px] font-semibold text-paper hover:bg-neutral-800"
         >回首頁</a
     >
 </div>

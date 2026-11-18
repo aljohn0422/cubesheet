@@ -37,7 +37,7 @@
 	<DialogPrimitive.Content
 		bind:ref
 		class={cn(
-			"fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-ink bg-paper p-6 shadow-[0_18px_40px_-8px_rgb(17_17_17/0.35)]",
+			"fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 rounded-xl border border-ink bg-paper p-6 shadow-[0_18px_40px_-8px_rgb(17_17_17/0.35)]",
 			className
 		)}
 		onOpenAutoFocus={handleOpenAutoFocus}
@@ -45,7 +45,7 @@
 	>
 		{@render children?.()}
 		<DialogPrimitive.Close
-			class="absolute right-2 top-2 inline-flex size-11 items-center justify-center border border-transparent hover:border-ink disabled:pointer-events-none"
+			class="absolute right-2 top-2 inline-flex size-11 items-center justify-center rounded-lg border border-transparent hover:border-ink disabled:pointer-events-none"
 		>
 			<X class="size-5" />
 			<span class="sr-only">關閉</span>
