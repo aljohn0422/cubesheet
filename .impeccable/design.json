@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T08:36:49.252526+00:00",
+  "title": "Design System: 給老婆小孩的魔術方塊筆記",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Press Ink",
+        "canonical": "rgb(17 17 17)",
+        "tonalRamp": [
+          "#111111",
+          "#262626",
+          "#404040",
+          "#525252",
+          "#737373",
+          "#a3a3a3",
+          "#d4d4d4",
+          "#f5f5f5"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "rgb(255 255 255)",
+        "tonalRamp": [
+          "#1a1a1a",
+          "#333333",
+          "#525252",
+          "#737373",
+          "#a3a3a3",
+          "#d4d4d4",
+          "#e5e5e5",
+          "#f5f5f5"
+        ]
+      },
+      "errata": {
+        "role": "secondary",
+        "displayName": "Errata Red",
+        "canonical": "#c4301a",
+        "tonalRamp": [
+          "#3d0f08",
+          "#5e170c",
+          "#8a2212",
+          "#c4301a",
+          "#de5a43",
+          "#ea8b7a",
+          "#f3bdb3",
+          "#faebe8"
+        ]
+      },
+      "rule-grey": {
+        "role": "neutral",
+        "displayName": "Rule Grey",
+        "canonical": "hsl(0 0% 83%)",
+        "tonalRamp": [
+          "#1a1a1a",
+          "#333333",
+          "#525252",
+          "#737373",
+          "#a3a3a3",
+          "#d4d4d4",
+          "#e5e5e5",
+          "#f5f5f5"
+        ]
+      },
+      "secondary-grey": {
+        "role": "neutral",
+        "displayName": "Secondary Grey",
+        "canonical": "hsl(0 0% 32%)",
+        "tonalRamp": [
+          "#1a1a1a",
+          "#333333",
+          "#525252",
+          "#737373",
+          "#a3a3a3",
+          "#d4d4d4",
+          "#e5e5e5",
+          "#f5f5f5"
+        ]
+      },
+      "wash-grey": {
+        "role": "neutral",
+        "displayName": "Wash Grey",
+        "canonical": "#f5f5f5",
+        "tonalRamp": [
+          "#1a1a1a",
+          "#333333",
+          "#525252",
+          "#737373",
+          "#a3a3a3",
+          "#d4d4d4",
+          "#e5e5e5",
+          "#f5f5f5"
+        ]
+      },
+      "press-grey": {
+        "role": "neutral",
+        "displayName": "Press Grey",
+        "canonical": "#e5e5e5",
+        "tonalRamp": [
+          "#1a1a1a",
+          "#333333",
+          "#525252",
+          "#737373",
+          "#a3a3a3",
+          "#d4d4d4",
+          "#e5e5e5",
+          "#f5f5f5"
+        ]
+      },
+      "ink-hover": {
+        "role": "neutral",
+        "displayName": "Ink Hover",
+        "canonical": "#262626",
+        "tonalRamp": [
+          "#1a1a1a",
+          "#333333",
+          "#525252",
+          "#737373",
+          "#a3a3a3",
+          "#d4d4d4",
+          "#e5e5e5",
+          "#f5f5f5"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Chapter title in the layout, one per page."
+      },
+      "display-home": {
+        "displayName": "Display Home",
+        "purpose": "Site title on the home page only."
+      },
+      "headline-error": {
+        "displayName": "Headline Error",
+        "purpose": "404 / error page heading."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Section heads over the 2px rule; player dialog title."
+      },
+      "notation": {
+        "displayName": "Notation",
+        "purpose": "Algorithms in case cells, notation table, player alg viewer; 17px for alternatives."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Chapter summary, home intro, home chapter row titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Teaching prose, max 38em."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Site name, header path, index rows, jump links, case names, buttons, captions."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Move counts, index counts, group labels, speed control."
+      }
+    },
+    "shadows": [
+      {
+        "name": "dialog-lift",
+        "value": "0 18px 40px -8px rgb(17 17 17 / 0.35)",
+        "purpose": "Player dialog only; everything else is flat."
+      }
+    ],
+    "motion": [
+      {
+        "name": "row-hover",
+        "value": "background-color 150ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Wash-grey hover on rows, cells and outline buttons (Tailwind transition-colors)."
+      },
+      {
+        "name": "sheet-slide",
+        "value": "open 500ms / close 300ms ease-in-out",
+        "purpose": "Mobile index sheet slide-in from the left with scrim fade."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Case Cell",
+      "kind": "card",
+      "refersTo": "case-cell",
+      "description": "One case in the ruled grid; the whole cell opens the 3D player.",
+      "html": "<div class=\"ds-grid\"><button class=\"ds-cell\"><span class=\"ds-cube\"></span><span class=\"ds-cell-text\"><span class=\"ds-name\">OLL27</span><span class=\"ds-alg\">R U R' U R U2' R'</span><span class=\"ds-count\">7 步</span></span></button><button class=\"ds-cell\"><span class=\"ds-cube\"></span><span class=\"ds-cell-text\"><span class=\"ds-name\">OLL7</span><span class=\"ds-alg\">r U R' U R U2' r'</span><span class=\"ds-count\">7 步</span></span></button></div>",
+      "css": ".ds-grid{display:grid;grid-template-columns:1fr 1fr;border-left:1px solid #111;border-top:1px solid #111;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif;color:#111} .ds-cell{display:flex;gap:16px;align-items:flex-start;padding:16px;text-align:left;background:#fff;border:0;border-right:1px solid #111;border-bottom:1px solid #111;border-radius:0;cursor:pointer;font:inherit;color:inherit;transition:background-color .15s} .ds-cell:hover{background:#f5f5f5} .ds-cell:active{background:#e5e5e5} .ds-cell:focus-visible{outline:2px solid #111;outline-offset:2px} .ds-cube{width:88px;height:88px;flex-shrink:0;background:repeating-conic-gradient(#ffd500 0 25%,#333 0 50%) 0 0/29px 29px} .ds-cell-text{display:flex;flex-direction:column} .ds-name{font-size:15px;font-weight:700} .ds-alg{margin-top:4px;font-size:19px;font-weight:600;line-height:1.375} .ds-count{margin-top:8px;font-size:13px;color:#525252;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Primary action: 回首頁, play/pause.",
+      "html": "<a class=\"ds-btn-ink\" href=\"#\">回首頁</a>",
+      "css": ".ds-btn-ink{display:inline-flex;align-items:center;height:44px;padding:0 20px;background:#111;color:#fff;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif;font-size:15px;font-weight:600;text-decoration:none;border-radius:0;transition:background-color .15s} .ds-btn-ink:hover{background:#262626} .ds-btn-ink:focus-visible{outline:2px solid #111;outline-offset:2px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary control: 目錄 trigger, player step buttons; disabled shows the face-down hatch.",
+      "html": "<button class=\"ds-btn-outline\">目錄</button> <button class=\"ds-btn-outline\" disabled>上一步</button>",
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;height:44px;padding:0 16px;background:#fff;color:#111;border:1px solid #111;border-radius:0;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:background-color .15s} .ds-btn-outline:hover{background:#f5f5f5} .ds-btn-outline:focus-visible{outline:2px solid #111;outline-offset:2px} .ds-btn-outline:disabled{color:rgb(17 17 17/.25);pointer-events:none;background-image:repeating-linear-gradient(135deg,rgb(17 17 17/.08) 0 2px,transparent 2px 6px)}"
+    },
+    {
+      "name": "Speed Control",
+      "kind": "chip",
+      "refersTo": "button-outline",
+      "description": "Segmented 44px cells in one ink frame; selected cell ink-filled.",
+      "html": "<div class=\"ds-seg\"><button>0.5×</button><button>0.8×</button><button aria-pressed=\"true\">1×</button><button>1.5×</button><button>2×</button></div>",
+      "css": ".ds-seg{display:inline-flex;border:1px solid #111;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif;font-size:13px} .ds-seg button{min-width:44px;height:44px;padding:0 6px;border:0;border-left:1px solid #111;background:#fff;color:#111;font:inherit;font-variant-numeric:tabular-nums;cursor:pointer} .ds-seg button:first-child{border-left:0} .ds-seg button:hover{background:#f5f5f5} .ds-seg button[aria-pressed=true]{background:#111;color:#fff} .ds-seg button:focus-visible{outline:2px solid #111;outline-offset:2px}"
+    },
+    {
+      "name": "Site Index",
+      "kind": "nav",
+      "refersTo": "index-row",
+      "description": "Data-driven index: grey group label, ink-ruled list, ink-filled active row with count.",
+      "html": "<nav class=\"ds-index\"><p class=\"ds-group\">三階 CFOP</p><ul><li><a href=\"#\"><span>F2L</span><span class=\"ds-n\">41</span></a></li><li><a href=\"#\" aria-current=\"page\"><span>OLL</span><span class=\"ds-n\">24</span></a></li><li><a href=\"#\"><span>PLL</span><span class=\"ds-n\">21</span></a></li></ul></nav>",
+      "css": ".ds-index{width:14rem;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif;color:#111} .ds-group{margin:0;padding:0 8px 6px;font-size:13px;font-weight:600;color:#525252} .ds-index ul{list-style:none;margin:0;padding:0;border-top:1px solid #111} .ds-index li{border-bottom:1px solid #d4d4d4} .ds-index li:last-child{border-bottom-color:#111} .ds-index a{display:flex;min-height:44px;align-items:center;justify-content:space-between;padding:0 8px;font-size:15px;color:inherit;text-decoration:none;transition:background-color .15s} .ds-index a:hover{background:#f5f5f5} .ds-index a[aria-current=page]{background:#111;color:#fff;font-weight:600} .ds-n{font-size:13px;color:#525252;font-variant-numeric:tabular-nums} .ds-index a[aria-current=page] .ds-n{color:#fff} .ds-index a:focus-visible{outline:2px solid #111;outline-offset:2px}"
+    },
+    {
+      "name": "Jump Row",
+      "kind": "nav",
+      "refersTo": "jump-link",
+      "description": "Ruled band of the page's section links with grey counts; the fast path past the teaching prose.",
+      "html": "<nav class=\"ds-jump\"><a href=\"#\">怎麼學</a><a href=\"#\">二段OLL <span>7</span></a><a href=\"#\">簡單OLL <span>17</span></a></nav>",
+      "css": ".ds-jump{display:flex;flex-wrap:wrap;column-gap:24px;padding:8px 0;border-top:1px solid #111;border-bottom:1px solid #111;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif} .ds-jump a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:15px;font-weight:600;color:#111;text-decoration:none} .ds-jump a:hover{text-decoration:underline;text-underline-offset:.25em} .ds-jump span{font-weight:400;color:#525252;font-variant-numeric:tabular-nums} .ds-jump a:focus-visible{outline:2px solid #111;outline-offset:2px}"
+    },
+    {
+      "name": "Section Head",
+      "kind": "custom",
+      "refersTo": "title",
+      "description": "Bold title over a 2px ink rule with the case count in grey at the right.",
+      "html": "<h2 class=\"ds-sec\">二段OLL <span>7</span></h2>",
+      "css": ".ds-sec{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:0;padding-bottom:8px;border-bottom:2px solid #111;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif;font-size:1.5rem;font-weight:700;color:#111} .ds-sec span{font-size:15px;font-weight:400;color:#525252;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Notation Table",
+      "kind": "custom",
+      "refersTo": "notation",
+      "description": "Ruled definition list: ink top rule, grey row hairlines, symbol at notation size.",
+      "html": "<dl class=\"ds-dl\"><dt>R'</dt><dd>加上 ' 代表逆時針</dd><dt>U2</dt><dd>轉 180°，順逆時針結果一樣</dd></dl>",
+      "css": ".ds-dl{display:grid;grid-template-columns:auto 1fr;margin:0;border-top:1px solid #111;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.75;color:#111} .ds-dl dt,.ds-dl dd{margin:0;padding:12px 0;border-bottom:1px solid #d4d4d4} .ds-dl dt{padding-right:24px;font-size:19px;font-weight:600}"
+    }
+  ],
+  "narrative": {
+    "northStar": "公式速查表 (The Alg Cheat Sheet)",
+    "overview": "**Creative North Star: \"公式速查表 (The Alg Cheat Sheet)\"**\n\nThe site is a well-printed algorithm cheat sheet: black ink on white paper, ruled table cells, and notation set as the largest, heaviest text inside each cell. It reads like a sheet you could print and tape next to the cube, and `@media print` makes that literal: header, index and jump row drop away, cells refuse to break across pages.\n\nDensity is high but orderly. Every case is one cell in a 1px ruled grid; every section opens with a bold heading over a 2px rule and a grey count at the right. Nothing is boxed for decoration: borders exist only where a table would draw them. Colour is reserved for the cube diagrams themselves, so the yellow of an OLL face or the red/blue of an F2L slot is the only chroma on the page and therefore the thing the eye lands on.\n\nStructure is data-driven. One list in `src/lib/nav.ts` (groups → chapters) generates the left index, the home tables, the header path and the document title, so a new puzzle or method is a data entry plus a route, not a redesign.\n\nConfirmed rejection: the earlier \"boxed reference manual\" world (coloured divider boards, acetate leaf, fore-edge tab rail) was built and rejected by the user. Colour fields and decorative shells are out.",
+    "keyCharacteristics": [
+      "Ink #111 on white; grey only for secondary text and hairlines; red only for errors.",
+      "1px ruled grids, 2px rule under section heads, square corners everywhere.",
+      "Schibsted Grotesk for Latin and notation, Noto Sans TC for CJK, one sans stack.",
+      "Notation is the largest text in a cell (19px semibold), larger than the case name.",
+      "Cube stickers are the only colour.",
+      "Navigation is generated from `navGroups`; extending the site is a data change."
+    ],
+    "rules": [
+      {
+        "name": "The Stickers-Only Rule",
+        "body": "Cube diagrams and the 3D player are the only coloured things on the page. No accent colour, no tinted section, no coloured chip.",
+        "section": "colors"
+      },
+      {
+        "name": "The Grey-Is-Secondary Rule",
+        "body": "Grey is for text that is subordinate (counts, captions, summaries) and for inner hairlines. It is never a fill for a panel or a heading.",
+        "section": "colors"
+      },
+      {
+        "name": "The Red-Means-Wrong Rule",
+        "body": "Errata red appears only when something failed. It is not an emphasis or highlight colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Notation-Is-Largest Rule",
+        "body": "Inside a case cell the algorithm is the biggest, heaviest text (19px semibold); the case name sits above it at 15px bold and the move count below at 13px grey.",
+        "section": "typography"
+      },
+      {
+        "name": "The Closed Ramp Rule",
+        "body": "Every literal font size in app code is one of: 13px, 15px, 17px, 19px, 1.125rem, 1.5rem, 2.25rem, or the two display clamps. Add a step here before using a new size.",
+        "section": "typography"
+      },
+      {
+        "name": "The Table-Not-Stack Rule",
+        "body": "Hierarchy comes from rule weight (1px cell, 2px section head, ink vs grey hairline), never from raised cards.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep ink #111 on white for all text and structure; reach for a heavier rule, not a colour, when something needs emphasis.",
+      "Do put every case in a ruled grid cell (1px ink, single-drawn lines) and every section head over a 2px ink rule with its count in grey at the right.",
+      "Do set notation at 19px semibold as the largest text in a cell.",
+      "Do keep corners square (0px) on cells, buttons, dialogs and sheets.",
+      "Do make interactive rows and buttons at least 44px tall with a wash-grey hover.",
+      "Do add chapters and puzzles through `navGroups` plus a route, and keep teaching prose before the case tables with the jump row as the shortcut.",
+      "Do use the face-down hatch for disabled controls."
+    ],
+    "donts": [
+      "Don't introduce an accent colour, coloured section fields or tinted cards; cube stickers are the only colour.",
+      "Don't use errata red for anything but errors.",
+      "Don't use grey as a panel fill or for headings; grey is for secondary text and inner hairlines.",
+      "Don't round corners or add shadows outside the player dialog.",
+      "Don't bring back the reference-manual devices (divider boards, acetate leaf, fore-edge tab rail).",
+      "Don't use a font size outside the documented ramp.",
+      "Don't apply `PLAYER_MASKS` to non-3x3 puzzles."
+    ]
+  }
+}
