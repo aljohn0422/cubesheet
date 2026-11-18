@@ -1,79 +1,80 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ── 速查表：黑白、表格線、公式字最大 ─────────────────────────── */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 72.2% 50.6%;
-    --destructive-foreground: 210 40% 98%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --ink: 17 17 17;
+    --paper: 255 255 255;
+    color-scheme: light;
+    scrollbar-color: rgb(var(--ink) / 0.35) transparent;
+    /* 錨點跳轉時留出固定頁首（3.5rem）的空間 */
+    scroll-padding-top: 5rem;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
+  /* 沒指定顏色的邊框預設為淺灰（表格內的細線） */
   * {
-    @apply border-border;
+    border-color: theme("colors.neutral.300");
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-paper font-sans text-ink antialiased;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  ::selection {
+    background: rgb(var(--ink));
+    color: rgb(var(--paper));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--ink));
+    outline-offset: 2px;
+  }
+
+  a {
+    text-underline-offset: 0.25em;
+  }
+}
+
+@layer components {
+  /* 停用：斜線底，像被劃掉的格子 */
+  .face-down {
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgb(var(--ink) / 0.08) 0 2px,
+      transparent 2px 6px
+    );
+  }
+
+  /*
+   * 表格線網格：外框只畫左、上，每格畫右、下，格線不會重疊加粗。
+   * 用在公式卡片的格子與插圖。
+   */
+  .ruled-grid {
+    border-left: 1px solid rgb(var(--ink));
+    border-top: 1px solid rgb(var(--ink));
+  }
+  .ruled-grid > * {
+    border-right: 1px solid rgb(var(--ink));
+    border-bottom: 1px solid rgb(var(--ink));
+  }
+}
+
+/*
+ * 3D 播放器「目前這一步」：cubing.js 在 light DOM 的那一步元素加上這個 class，
+ * 裡面預設的藍色底用灰階濾掉，再補一條墨色底線。
+ */
+twisty-alg-viewer .twisty-alg-current-move {
+  filter: grayscale(1);
+  box-shadow: inset 0 -2px 0 rgb(var(--ink));
+}
+
+/* 列印：頁首、目錄、段落列用 print:hidden 隱藏；格子不要被分頁切斷 */
+@media print {
+  .ruled-grid > * {
+    break-inside: avoid;
   }
 }

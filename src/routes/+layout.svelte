@@ -1,43 +1,75 @@
 <script lang="ts">
     import "../app.css";
-    import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-    import AppSidebar from "$lib/components/app-sidebar.svelte";
-    import * as Breadcrumb from "$lib/components/ui/breadcrumb/index";
-    import { Separator } from "$lib/components/ui/separator/index.js";
-    import { breadcrumbs } from "../lib/state/shared.svelte";
+    import { page } from "$app/state";
+    import SiteIndex from "$lib/components/site-index.svelte";
+    import * as Sheet from "$lib/components/ui/sheet/index.js";
+    import { findNav, SITE_TITLE } from "$lib/nav";
 
     let { children } = $props();
+
+    const current = $derived(findNav(page.url.pathname));
+    const documentTitle = $derived(
+        current
+            ? `${current.item.title} · ${current.group.title} · ${SITE_TITLE}`
+            : SITE_TITLE,
+    );
+
+    // 手機版目錄：點了任何連結就收起
+    let indexOpen = $state(false);
 </script>
 
-<Sidebar.Provider>
-    <AppSidebar />
-    <main class="w-full text-slate-700">
-        <Sidebar.Inset>
-            <header
-                class="flex h-16 shrink-0 items-center gap-2 border-b mb-3 sticky top-0 bg-white z-10"
+<svelte:head>
+    <title>{documentTitle}</title>
+</svelte:head>
+
+<!-- 頁首總高 3.5rem（含底線）；目錄的 sticky 位置與 html 的 scroll-padding 都以此為準 -->
+<header class="sticky top-0 z-20 h-14 border-b border-ink bg-paper print:hidden">
+    <div class="mx-auto flex h-full max-w-[90rem] items-center justify-between gap-4 px-5">
+        <a href="/" class="truncate text-[15px] font-bold">{SITE_TITLE}</a>
+
+        {#if current}
+            <p class="hidden shrink-0 text-[15px] text-neutral-600 lg:block">
+                {current.group.title} ／ <span class="font-semibold text-ink">{current.item.title}</span>
+            </p>
+        {/if}
+
+        <Sheet.Root bind:open={indexOpen}>
+            <Sheet.Trigger
+                class="inline-flex h-11 shrink-0 items-center border border-ink px-4 text-[15px] font-semibold hover:bg-neutral-100 lg:hidden"
             >
-                <div class="flex items-center gap-2 px-3">
-                    <Sidebar.Trigger />
-                    <Separator orientation="vertical" class="mr-2 h-4" />
-                    <Breadcrumb.Root>
-                        <Breadcrumb.List>
-                            {#each breadcrumbs.paths as path, i}
-                                <Breadcrumb.Item class="hidden md:block">
-                                    {path}
-                                </Breadcrumb.Item>
-                                {#if i != breadcrumbs.paths.length - 1}
-                                    <Breadcrumb.Separator
-                                        class="hidden md:block"
-                                    />
-                                {/if}
-                            {/each}
-                        </Breadcrumb.List>
-                    </Breadcrumb.Root>
-                </div>
-            </header>
-            <div class="px-6 sm:px-12 lg:px-24 2xl:px-36 py-4">
-                {@render children?.()}
+                目錄
+            </Sheet.Trigger>
+            <Sheet.Content side="left" class="w-[min(20rem,85vw)] overflow-y-auto border-ink p-5 pt-16">
+                <Sheet.Title class="sr-only">目錄</Sheet.Title>
+                <SiteIndex onnavigate={() => (indexOpen = false)} />
+            </Sheet.Content>
+        </Sheet.Root>
+    </div>
+</header>
+
+<div class="mx-auto max-w-[90rem] px-5 lg:grid lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-14">
+    <aside class="hidden lg:block print:hidden">
+        <div class="sticky top-14 max-h-[calc(100dvh-3.5rem)] overflow-y-auto py-10">
+            <SiteIndex />
+        </div>
+    </aside>
+
+    <main class="min-w-0 pb-24 pt-10">
+        {#if current && !page.error}
+            <div class="mb-12">
+                <h1
+                    class="text-[clamp(3.5rem,11vw,6rem)] font-extrabold leading-none tracking-[-0.03em]"
+                >
+                    {current.item.title}
+                </h1>
+                <p class="mt-4 text-lg">
+                    {current.item.summary}
+                    {#if current.item.extent !== undefined}
+                        <span class="whitespace-nowrap text-neutral-600">收錄 {current.item.extent} 個</span>
+                    {/if}
+                </p>
             </div>
-        </Sidebar.Inset>
+        {/if}
+        {@render children?.()}
     </main>
-</Sidebar.Provider>
+</div>
