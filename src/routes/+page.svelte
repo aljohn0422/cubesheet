@@ -41,7 +41,7 @@
                     <svelte:element
                         this={item.url ? "a" : "div"}
                         href={item.url}
-                        class="grid grid-cols-[2rem_minmax(0,1fr)_auto] items-center gap-4 px-2 py-3 {item.url
+                        class="grid grid-cols-[2rem_minmax(0,1fr)_auto] items-center gap-4 rounded-lg px-2 py-3 {item.url
                             ? 'transition-colors hover:bg-neutral-100'
                             : 'text-neutral-600'}"
                     >

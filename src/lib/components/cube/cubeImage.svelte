@@ -96,10 +96,10 @@
 >
     {#if status === "loading"}
         <!-- 還沒畫好：虛線框，像還沒貼上的圖 -->
-        <div class="absolute inset-0 border border-dashed border-neutral-400"></div>
+        <div class="absolute inset-0 rounded-md border border-dashed border-neutral-400"></div>
     {:else if status === "error"}
         <!-- 紅色只用在錯誤 -->
-        <div class="absolute inset-0 flex items-center justify-center border border-errata px-1 text-center text-[13px] leading-tight text-errata">
+        <div class="absolute inset-0 flex items-center justify-center rounded-md border border-errata px-1 text-center text-[13px] leading-tight text-errata">
             圖片無法顯示
         </div>
     {/if}

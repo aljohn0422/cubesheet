@@ -62,6 +62,10 @@ typography:
     fontFeature: "\"tnum\""
 rounded:
   none: "0px"
+  sticker: "4px"
+  figure: "6px"
+  control: "8px"
+  frame: "12px"
 spacing:
   hairline: "1px"
   head-rule: "2px"
@@ -84,7 +88,7 @@ components:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.paper}"
     typography: "{typography.label}"
-    rounded: "{rounded.none}"
+    rounded: "{rounded.control}"
     padding: "0 20px"
     height: "44px"
   button-ink-hover:
@@ -93,7 +97,7 @@ components:
     backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
     typography: "{typography.label}"
-    rounded: "{rounded.none}"
+    rounded: "{rounded.control}"
     padding: "0 16px"
     height: "44px"
   button-outline-hover:
@@ -102,7 +106,7 @@ components:
     backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
     typography: "{typography.label}"
-    rounded: "{rounded.none}"
+    rounded: "{rounded.control}"
     padding: "0 8px"
     height: "44px"
   index-row-active:
@@ -115,7 +119,7 @@ components:
   dialog:
     backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
+    rounded: "{rounded.frame}"
     padding: "16px 20px 20px"
     width: "384px"
 ---
@@ -136,7 +140,7 @@ Confirmed rejection: the earlier "boxed reference manual" world (coloured divide
 
 **Key Characteristics:**
 - Ink #111 on white; grey only for secondary text and hairlines; red only for errors.
-- 1px ruled grids, 2px rule under section heads, square corners everywhere.
+- 1px ruled grids inside rounded 12px frames, 2px rule under section heads, 8px rounded controls.
 - Schibsted Grotesk for Latin and notation, Noto Sans TC for CJK, one sans stack.
 - Notation is the largest text in a cell (19px semibold), larger than the case name.
 - Cube stickers are the only colour.
@@ -215,17 +219,21 @@ Flat. Depth is conveyed by ink rules and the scrim, not by shadows. The only sha
 
 ## Shapes
 
-Square corners everywhere (`--radius: 0`). The form language is a printed table: the ruled grid draws its outer frame only on the left and top and each cell draws its right and bottom, so lines never double up. Lists open with an ink top rule, separate rows with grey hairlines and close with an ink bottom rule. Disabled controls are "face-down": a 135° ink hatch at 8% like a crossed-out cell. A cube diagram still loading shows a dashed grey frame, like an unpasted figure.
+Soft corners on a printed table. The user chose rounded corners over the earlier all-square look, so every box and control is rounded, while the lines inside a table stay straight.
+
+- **Radius scale:** 12px frame (`rounded-xl`: case-grid and figure frames, dialog, the practice boxes on 盲解練習, the free edge of the sheet), 8px control (`rounded-lg`: buttons, segmented controls, index rows and home chapter rows), 6px figure (`rounded-md`: the cube diagram's loading and error frames), 4px sticker (`rounded`: stickers in the 盲解 net and the side bars of the recognition sticker).
+- **Ruled frame:** `.ruled-frame` draws a full 1px ink border with the 12px radius and clips its content; the `.ruled-grid` inside it draws only each cell's right and bottom line and overhangs the frame by 1px to the right and bottom, so the last column's and last row's lines hide under the frame. Every edge gets exactly one line, and the corner cells' hover fill follows the curve. Cells themselves stay square.
+- **Lines stay straight:** never put a border on an element that is also rounded inside a ruled list. Draw the hairlines on a wrapper (`li` or a `divide-y` parent) and let the rounded row carry only its fill, as the index does. Lists open with an ink top rule, separate rows with grey hairlines and close with an ink bottom rule. Disabled controls are "face-down": a 135° ink hatch at 8% like a crossed-out cell. A cube diagram still loading shows a dashed grey frame, like an unpasted figure.
 
 ## Components
 
 ### Buttons
-Square, ink-ruled, 44px tall.
-- **Shape:** square (0px).
+Rounded, ink-ruled, 44px tall.
+- **Shape:** 8px radius (`rounded-lg`).
 - **Ink (primary):** ink fill, paper text, 15px semibold, 20px side padding ("回首頁", the player's play/pause). Hover ink-hover.
 - **Outline:** 1px ink border on paper, wash-grey hover (目錄 trigger, player step/restart icon buttons at 44×44).
-- **Segmented:** the speed control is a row of 44px cells inside one ink frame with ink dividers; the selected cell is ink-filled.
-- **Close:** 44px transparent-bordered square in dialog/sheet corners that gains an ink border on hover.
+- **Segmented:** a row of 44px cells inside one 8px-rounded ink frame (`overflow-hidden`) with ink dividers; the selected cell is ink-filled. Used for the player speed and the 盲解練習 mode and piece-type pickers.
+- **Close:** 44px transparent-bordered, 8px-rounded button in dialog/sheet corners that gains an ink border on hover.
 - **Disabled:** text at ink/25 plus the face-down hatch.
 - **Focus:** global 2px ink outline, 2px offset.
 
@@ -245,7 +253,7 @@ Max 24rem, ink border, dialog lift, title over a 2px ink rule. A 224px twisty-pl
 The notation table (`dl`) and home chapter list follow the same ruled-list form: ink top, grey row hairlines, 12px row padding.
 
 ### Legacy
-Vendored shadcn components other than dialog, sheet and button (sidebar, breadcrumb, card, tooltip, dropdown-menu, hover-card, collapsible, input, label, separator, skeleton) are unused legacy, as are the `sidebar` colour keys in `tailwind.config.ts`. The shadcn button itself is not imported by any page; its rounded-md classes resolve to 0 through `--radius`. None of these are part of the system.
+Vendored shadcn components other than dialog, sheet and button (sidebar, breadcrumb, card, tooltip, dropdown-menu, hover-card, collapsible, input, label, separator, skeleton) are unused legacy, as are the `sidebar` colour keys in `tailwind.config.ts`. The shadcn button itself is not imported by any page; it predates the radius scale above. None of these are part of the system.
 
 ## Do's and Don'ts
 
@@ -253,7 +261,7 @@ Vendored shadcn components other than dialog, sheet and button (sidebar, breadcr
 - **Do** keep ink #111 on white for all text and structure; reach for a heavier rule, not a colour, when something needs emphasis.
 - **Do** put every case in a ruled grid cell (1px ink, single-drawn lines) and every section head over a 2px ink rule with its count in grey at the right.
 - **Do** set notation at 19px semibold as the largest text in a cell.
-- **Do** keep corners square (0px) on cells, buttons, dialogs and sheets.
+- **Do** round boxes and controls on the radius scale (12px frames, 8px controls, 6px diagram frames, 4px stickers) and keep the lines inside a table straight.
 - **Do** make interactive rows and buttons at least 44px tall with a wash-grey hover.
 - **Do** add chapters and puzzles through `navGroups` plus a route, and keep teaching prose before the case tables with the jump row as the shortcut.
 - **Do** use the face-down hatch for disabled controls.
@@ -262,7 +270,7 @@ Vendored shadcn components other than dialog, sheet and button (sidebar, breadcr
 - **Don't** introduce an accent colour, coloured section fields or tinted cards; cube stickers are the only colour.
 - **Don't** use errata red for anything but errors.
 - **Don't** use grey as a panel fill or for headings; grey is for secondary text and inner hairlines.
-- **Don't** round corners or add shadows outside the player dialog.
+- **Don't** add shadows outside the player dialog, or round an element whose border is a hairline in a ruled list (the line would curve).
 - **Don't** bring back the reference-manual devices (divider boards, acetate leaf, fore-edge tab rail).
 - **Don't** use a font size outside the documented ramp.
 - **Don't** apply `PLAYER_MASKS` to non-3x3 puzzles.

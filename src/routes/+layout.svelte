@@ -35,7 +35,7 @@
 
         <Sheet.Root bind:open={indexOpen}>
             <Sheet.Trigger
-                class="inline-flex h-11 shrink-0 items-center border border-ink px-4 text-[15px] font-semibold hover:bg-neutral-100 lg:hidden"
+                class="inline-flex h-11 shrink-0 items-center rounded-lg border border-ink px-4 text-[15px] font-semibold hover:bg-neutral-100 lg:hidden"
             >
                 目錄
             </Sheet.Trigger>

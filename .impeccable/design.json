@@ -208,7 +208,7 @@
       "refersTo": "case-cell",
       "description": "One case in the ruled grid; the whole cell opens the 3D player.",
       "html": "<div class=\"ds-grid\"><button class=\"ds-cell\"><span class=\"ds-cube\"></span><span class=\"ds-cell-text\"><span class=\"ds-name\">OLL27</span><span class=\"ds-alg\">R U R' U R U2' R'</span><span class=\"ds-count\">7 步</span></span></button><button class=\"ds-cell\"><span class=\"ds-cube\"></span><span class=\"ds-cell-text\"><span class=\"ds-name\">OLL7</span><span class=\"ds-alg\">r U R' U R U2' r'</span><span class=\"ds-count\">7 步</span></span></button></div>",
-      "css": ".ds-grid{display:grid;grid-template-columns:1fr 1fr;border-left:1px solid #111;border-top:1px solid #111;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif;color:#111} .ds-cell{display:flex;gap:16px;align-items:flex-start;padding:16px;text-align:left;background:#fff;border:0;border-right:1px solid #111;border-bottom:1px solid #111;border-radius:0;cursor:pointer;font:inherit;color:inherit;transition:background-color .15s} .ds-cell:hover{background:#f5f5f5} .ds-cell:active{background:#e5e5e5} .ds-cell:focus-visible{outline:2px solid #111;outline-offset:2px} .ds-cube{width:88px;height:88px;flex-shrink:0;background:repeating-conic-gradient(#ffd500 0 25%,#333 0 50%) 0 0/29px 29px} .ds-cell-text{display:flex;flex-direction:column} .ds-name{font-size:15px;font-weight:700} .ds-alg{margin-top:4px;font-size:19px;font-weight:600;line-height:1.375} .ds-count{margin-top:8px;font-size:13px;color:#525252;font-variant-numeric:tabular-nums}"
+      "css": ".ds-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid #111;border-radius:12px;overflow:hidden;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif;color:#111} .ds-cell{display:flex;gap:16px;align-items:flex-start;padding:16px;text-align:left;background:#fff;border:0;border-right:1px solid #111;border-bottom:1px solid #111;border-radius:0;cursor:pointer;font:inherit;color:inherit;transition:background-color .15s} .ds-cell:hover{background:#f5f5f5} .ds-cell:active{background:#e5e5e5} .ds-cell:focus-visible{outline:2px solid #111;outline-offset:2px} .ds-cube{width:88px;height:88px;flex-shrink:0;background:repeating-conic-gradient(#ffd500 0 25%,#333 0 50%) 0 0/29px 29px} .ds-cell-text{display:flex;flex-direction:column} .ds-name{font-size:15px;font-weight:700} .ds-alg{margin-top:4px;font-size:19px;font-weight:600;line-height:1.375} .ds-count{margin-top:8px;font-size:13px;color:#525252;font-variant-numeric:tabular-nums}"
     },
     {
       "name": "Ink Button",
@@ -216,7 +216,7 @@
       "refersTo": "button-ink",
       "description": "Primary action: 回首頁, play/pause.",
       "html": "<a class=\"ds-btn-ink\" href=\"#\">回首頁</a>",
-      "css": ".ds-btn-ink{display:inline-flex;align-items:center;height:44px;padding:0 20px;background:#111;color:#fff;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif;font-size:15px;font-weight:600;text-decoration:none;border-radius:0;transition:background-color .15s} .ds-btn-ink:hover{background:#262626} .ds-btn-ink:focus-visible{outline:2px solid #111;outline-offset:2px}"
+      "css": ".ds-btn-ink{display:inline-flex;align-items:center;height:44px;padding:0 20px;background:#111;color:#fff;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif;font-size:15px;font-weight:600;text-decoration:none;border-radius:8px;transition:background-color .15s} .ds-btn-ink:hover{background:#262626} .ds-btn-ink:focus-visible{outline:2px solid #111;outline-offset:2px}"
     },
     {
       "name": "Outline Button",
@@ -224,7 +224,7 @@
       "refersTo": "button-outline",
       "description": "Secondary control: 目錄 trigger, player step buttons; disabled shows the face-down hatch.",
       "html": "<button class=\"ds-btn-outline\">目錄</button> <button class=\"ds-btn-outline\" disabled>上一步</button>",
-      "css": ".ds-btn-outline{display:inline-flex;align-items:center;height:44px;padding:0 16px;background:#fff;color:#111;border:1px solid #111;border-radius:0;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:background-color .15s} .ds-btn-outline:hover{background:#f5f5f5} .ds-btn-outline:focus-visible{outline:2px solid #111;outline-offset:2px} .ds-btn-outline:disabled{color:rgb(17 17 17/.25);pointer-events:none;background-image:repeating-linear-gradient(135deg,rgb(17 17 17/.08) 0 2px,transparent 2px 6px)}"
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;height:44px;padding:0 16px;background:#fff;color:#111;border:1px solid #111;border-radius:8px;font-family:\"Schibsted Grotesk\",\"Noto Sans TC\",ui-sans-serif,system-ui,sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:background-color .15s} .ds-btn-outline:hover{background:#f5f5f5} .ds-btn-outline:focus-visible{outline:2px solid #111;outline-offset:2px} .ds-btn-outline:disabled{color:rgb(17 17 17/.25);pointer-events:none;background-image:repeating-linear-gradient(135deg,rgb(17 17 17/.08) 0 2px,transparent 2px 6px)}"
     },
     {
       "name": "Speed Control",
@@ -272,7 +272,7 @@
     "overview": "**Creative North Star: \"公式速查表 (The Alg Cheat Sheet)\"**\n\nThe site is a well-printed algorithm cheat sheet: black ink on white paper, ruled table cells, and notation set as the largest, heaviest text inside each cell. It reads like a sheet you could print and tape next to the cube, and `@media print` makes that literal: header, index and jump row drop away, cells refuse to break across pages.\n\nDensity is high but orderly. Every case is one cell in a 1px ruled grid; every section opens with a bold heading over a 2px rule and a grey count at the right. Nothing is boxed for decoration: borders exist only where a table would draw them. Colour is reserved for the cube diagrams themselves, so the yellow of an OLL face or the red/blue of an F2L slot is the only chroma on the page and therefore the thing the eye lands on.\n\nStructure is data-driven. One list in `src/lib/nav.ts` (groups → chapters) generates the left index, the home tables, the header path and the document title, so a new puzzle or method is a data entry plus a route, not a redesign.\n\nConfirmed rejection: the earlier \"boxed reference manual\" world (coloured divider boards, acetate leaf, fore-edge tab rail) was built and rejected by the user. Colour fields and decorative shells are out.",
     "keyCharacteristics": [
       "Ink #111 on white; grey only for secondary text and hairlines; red only for errors.",
-      "1px ruled grids, 2px rule under section heads, square corners everywhere.",
+      "1px ruled grids inside rounded 12px frames, 2px rule under section heads, 8px rounded controls.",
       "Schibsted Grotesk for Latin and notation, Noto Sans TC for CJK, one sans stack.",
       "Notation is the largest text in a cell (19px semibold), larger than the case name.",
       "Cube stickers are the only colour.",
@@ -314,7 +314,7 @@
       "Do keep ink #111 on white for all text and structure; reach for a heavier rule, not a colour, when something needs emphasis.",
       "Do put every case in a ruled grid cell (1px ink, single-drawn lines) and every section head over a 2px ink rule with its count in grey at the right.",
       "Do set notation at 19px semibold as the largest text in a cell.",
-      "Do keep corners square (0px) on cells, buttons, dialogs and sheets.",
+      "Do round boxes and controls on the radius scale (12px frames, 8px controls, 6px diagram frames, 4px stickers) and keep the lines inside a table straight.",
       "Do make interactive rows and buttons at least 44px tall with a wash-grey hover.",
       "Do add chapters and puzzles through `navGroups` plus a route, and keep teaching prose before the case tables with the jump row as the shortcut.",
       "Do use the face-down hatch for disabled controls."
@@ -323,7 +323,7 @@
       "Don't introduce an accent colour, coloured section fields or tinted cards; cube stickers are the only colour.",
       "Don't use errata red for anything but errors.",
       "Don't use grey as a panel fill or for headings; grey is for secondary text and inner hairlines.",
-      "Don't round corners or add shadows outside the player dialog.",
+      "Don't add shadows outside the player dialog, or round an element whose border is a hairline in a ruled list (the line would curve).",
       "Don't bring back the reference-manual devices (divider boards, acetate leaf, fore-edge tab rail).",
       "Don't use a font size outside the documented ramp.",
       "Don't apply `PLAYER_MASKS` to non-3x3 puzzles."

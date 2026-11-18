@@ -75,9 +75,9 @@
         twistyPlayer.jumpToStart();
     }
 
-    // 手冊按鈕：方角、細墨線；停用時「翻面」露出背面斜線
+    // 按鈕：圓角、細墨線；停用時「翻面」露出背面斜線
     const iconButton =
-        "inline-flex size-11 items-center justify-center border border-ink transition-colors disabled:pointer-events-none disabled:text-ink/25";
+        "inline-flex size-11 items-center justify-center rounded-lg border border-ink transition-colors disabled:pointer-events-none disabled:text-ink/25";
 </script>
 
 <div class="flex w-full flex-col items-center gap-3">
@@ -139,7 +139,7 @@
 
     <div class="flex items-center gap-3 text-[13px]">
         <span aria-hidden="true">速度</span>
-        <div class="flex divide-x divide-ink border border-ink" role="group" aria-label="播放速度">
+        <div class="flex divide-x divide-ink overflow-hidden rounded-lg border border-ink" role="group" aria-label="播放速度">
             {#each SPEEDS as value}
                 {@const selected = speed === value}
                 <button
