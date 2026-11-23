@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { ComponentProps } from "svelte";
+    import { Alg } from "cubing/alg";
     import * as Dialog from "$lib/components/ui/dialog/index.js";
     import CubeImage from "./cubeImage.svelte";
     import PlayerCard from "./playerCard.svelte";
@@ -16,6 +17,16 @@
         stage,
         /** 方塊種類（cubing.js 的 puzzle id），例如 "2x2x2"、"4x4x4" */
         puzzle = "3x3x3",
+        /**
+         * 這一格佔表格的幾列（1 + 同段落最多的替代公式數）。大於 1 時用 subgrid，
+         * 同一排的卡片共用列高：主公式那列一樣高、每條「或」也對齊，橫線連成一直線。
+         */
+        rows = 1,
+        /**
+         * 打亂狀態（黃頂）。有設定時，圖解與動畫都從這個狀態開始，
+         * 公式做完可能還差一個 U；沒設定時，圖解是「做完公式會復原」的狀態。
+         */
+        setup,
         ...image
     }: {
         alg: string;
@@ -24,6 +35,8 @@
         alternatives?: string[];
         stage?: string;
         puzzle?: string;
+        rows?: number;
+        setup?: string;
     } & ImageProps = $props();
 
     // 以下三個 regex 假設公式只有單層、不重複的括號分組（目前資料都是如此）
@@ -50,6 +63,10 @@
     const playerMask = $derived(stage && puzzle === "3x3x3" ? PLAYER_MASKS[stage] : undefined);
     // VisualCube 的 pzl 參數只要邊長
     const cubeSize = $derived(parseInt(puzzle) || 3);
+    // 圖解的 case 參數是「會被復原的公式」，所以給 setup 的反向
+    const imageAlg = $derived(setup ? new Alg(setup).invert().toString() : stripGrouping(alg));
+    // 動畫：cubing.js 預設白頂，先 x2 把黃色翻到頂面，再做 setup
+    const playerSetup = $derived(setup ? `x2 ${setup}` : undefined);
 </script>
 
 {#snippet algText(text: string, size = "text-[19px]")}
@@ -65,17 +82,26 @@
         <Dialog.Header class="border-b-2 border-ink pb-2 pr-10 text-left">
             <Dialog.Title class="text-2xl font-bold">{title}</Dialog.Title>
         </Dialog.Header>
-        <PlayerCard alg={playAlg} {puzzle} mask={playerMask} />
+        <PlayerCard
+            alg={playAlg}
+            {puzzle}
+            mask={playerMask}
+            setup={playerSetup}
+            anchor={setup ? "start" : "end"}
+        />
     </Dialog.Content>
 {/snippet}
 
 <!-- 表格裡的一格：整格都是按鈕，點開看動畫 -->
-<div class="flex flex-col">
+<div
+    class={rows > 1 ? "grid" : "flex flex-col"}
+    style={rows > 1 ? `grid-row: span ${rows}; grid-template-rows: subgrid;` : undefined}
+>
     <Dialog.Root>
         <Dialog.Trigger
             class="flex w-full flex-1 items-start gap-4 p-4 text-left transition-colors hover:bg-neutral-100 active:bg-neutral-200"
         >
-            <CubeImage alg={stripGrouping(alg)} {stage} pzl={cubeSize} size={88} {...image} />
+            <CubeImage alg={imageAlg} {stage} pzl={cubeSize} size={88} {...image} />
             <div class="min-w-0 flex-1">
                 <p class="text-[15px] font-bold">{name}</p>
                 <p class="mt-1 text-balance">{@render algText(displayAlg)}</p>

@@ -181,7 +181,7 @@ A monochrome ink-and-paper palette with one error red; all chroma comes from the
 **Character:** A sturdy, slightly condensed newspaper grotesk paired with a plain CJK gothic. Both are loaded from Google Fonts (Schibsted 400–900 variable, Noto Sans TC 400/500/700/900).
 
 ### Hierarchy
-- **Display** (800, clamp(3.5rem, 11vw, 6rem), line-height 1, -0.03em): the chapter title in the layout ("OLL", "F2L"). One per page.
+- **Display** (800, clamp(3.5rem, 11vw, 6rem), line-height 1, -0.03em): the chapter title in the layout ("OLL", "F2L"). One per page, with one exception: the drill card on 盲解練習 (letter pair, revealed letter) uses the same clamp, because the drilled letter is the whole point of that card. Before it is revealed the letter slot is a dashed 2px frame, the same "not filled in yet" figure as a loading diagram.
 - **Display Home** (900, clamp(2.25rem, 6vw, 4.25rem), 1.15, -0.02em): the site title on the home page only; breaks only after 「的」.
 - **Headline Error** (800, 2.25rem, -0.02em): the 404 / error page heading.
 - **Title** (700, 1.5rem): section heads over the 2px rule; also the player dialog title.
@@ -232,7 +232,7 @@ Rounded, ink-ruled, 44px tall.
 - **Shape:** 8px radius (`rounded-lg`).
 - **Ink (primary):** ink fill, paper text, 15px semibold, 20px side padding ("回首頁", the player's play/pause). Hover ink-hover.
 - **Outline:** 1px ink border on paper, wash-grey hover (目錄 trigger, player step/restart icon buttons at 44×44).
-- **Segmented:** a row of 44px cells inside one 8px-rounded ink frame (`overflow-hidden`) with ink dividers; the selected cell is ink-filled. Used for the player speed and the 盲解練習 mode and piece-type pickers.
+- **Segmented:** `aria-pressed` buttons in a `role="group"` (not a radiogroup, since there are no arrow keys); a row of 44px cells inside one 8px-rounded ink frame (`overflow-hidden`) with ink dividers; the selected cell is ink-filled. Used for the player speed, the 盲解練習 mode and piece-type pickers.
 - **Close:** 44px transparent-bordered, 8px-rounded button in dialog/sheet corners that gains an ink border on hover.
 - **Disabled:** text at ink/25 plus the face-down hatch.
 - **Focus:** global 2px ink outline, 2px offset.
@@ -280,4 +280,5 @@ Vendored shadcn components other than dialog, sheet and button (sidebar, breadcr
 1. **New chapter:** add an item to the right group in `navGroups` (`src/lib/nav.ts`) with `title`, `url`, `summary` and `extent`, and create the route at the same URL. The index, home table, header path and `<title>` update themselves. Leave `url` off to list a step as 未收錄.
 2. **New puzzle or method:** add a `NavGroup` (e.g. 「二階」「四階」); set `ordered: true` if it has a learning order. Groups with no listed chapter stay out of the index.
 3. **Page body:** `JumpRow` (first item 「怎麼學」, then each section with its count), a `Section` of `Paragraph`s and `Figure`s for teaching, then one `Section` per case group with `count` wrapping a `CaseGrid` of `Vis2dCard`s.
-4. **Other puzzles:** pass `puzzle` to `Vis2dCard` (cubing.js id such as `"2x2x2"`, `"4x4x4"`); it sets the VisualCube `pzl` size and the player's puzzle. Player sticker masks (`PLAYER_MASKS`) are written for 3x3 orbits and are applied only when `puzzle === "3x3x3"`; other puzzles play full colour.
+4. **Large sets (ZBLL):** a pure algorithm library for advanced solvers, so no teaching section and no jump row. Two rows of `CaseTile` pickers (1px ink border like every control, a 52px diagram over a 13px label; selected = ink-filled label only; 「全部」 is an authored blank 3x3, not a UI icon). On phones each row is a single horizontal scroller bleeding to the screen edges, so both rows fit in under half a screen filter by shape (yellow-only `oll` diagram) and by subgroup (full-colour `ll` diagram of the group's first case, plus 「全部」). The choice lives in the URL query (`?set=Pi&group=Pi 1`) so it can be linked, and only one shape renders at a time. Cases that come with a scramble state set `setup` on `AlgCase`: the diagram and the player both start from that state (player anchor `start`), and the alg may finish one AUF short.
+5. **Other puzzles:** pass `puzzle` to `Vis2dCard` (cubing.js id such as `"2x2x2"`, `"4x4x4"`); it sets the VisualCube `pzl` size and the player's puzzle. Player sticker masks (`PLAYER_MASKS`) are written for 3x3 orbits and are applied only when `puzzle === "3x3x3"`; other puzzles play full colour.

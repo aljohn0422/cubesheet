@@ -9,12 +9,19 @@
     // import 時 cubing 會自行註冊 <twisty-player> 與 <twisty-alg-viewer>
     import type { TwistyAlgViewer, TwistyPlayer } from "cubing/twisty";
     import "cubing/twisty";
+    import { rememberCamera } from "./camera";
 
     let {
         /** 可含分組括號，例如 "F (R U R' U') F'"；cubing.js 會照分組顯示 */
         alg,
         puzzle = "3x3x3",
         setup = "x2",
+        /**
+         * setup 對齊公式的哪一端：
+         * "end"：公式做完是 setup 的狀態（一般公式卡：做完就是復原）
+         * "start"：從 setup 的狀態開始做公式（ZBLL：從資料給的打亂狀態開始）
+         */
+        anchor = "end",
         /** cubing.js 自訂遮罩字串（只顯示相關顏色） */
         mask = undefined as string | undefined,
     }: {
@@ -22,6 +29,7 @@
         /** cubing.js puzzle id，例如 "2x2x2"、"4x4x4" */
         puzzle?: string;
         setup?: string;
+        anchor?: "start" | "end";
         mask?: string;
     } = $props();
 
@@ -53,6 +61,12 @@
         };
     });
 
+    // 一開始的視角；按「從頭開始」時連視角一起重設
+    let resetCamera: () => Promise<void> = async () => {};
+    $effect(() => {
+        resetCamera = rememberCamera(twistyPlayer);
+    });
+
     // 公式文字：播放時標出目前這一步（樣式見 app.css），點任一步可直接跳過去
     $effect(() => {
         algViewer.twistyPlayer = twistyPlayer;
@@ -73,6 +87,7 @@
     function restart() {
         twistyPlayer.pause();
         twistyPlayer.jumpToStart();
+        resetCamera();
     }
 
     // 按鈕：圓角、細墨線；停用時「翻面」露出背面斜線
@@ -84,7 +99,7 @@
     <twisty-player
         bind:this={twistyPlayer as any}
         {alg}
-        experimental-setup-anchor="end"
+        experimental-setup-anchor={anchor}
         experimental-setup-alg={setup}
         experimental-stickering-mask-orbits={mask}
         {puzzle}

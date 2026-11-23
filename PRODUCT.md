@@ -42,7 +42,7 @@ All of these are real usage scenes:
 - **3D animations:** `cubing` (`twisty-player`, `twisty-alg-viewer`). The player supports single-step playback, current-move highlighting, speed control and per-stage sticker masks.
 - **Orientation convention:** yellow on top, white on the bottom (WCA colour scheme). Cube sticker colours carry meaning and must stay standard.
 - **Content:**
-  - Current pages: 3x3 CFOP F2L (41 cases), OLL (24 of 57 listed), PLL (21) and advanced F2L (Sune set).
+  - Current pages: 3x3 CFOP F2L (41 cases), OLL (24 of 57 listed), PLL (21); advanced F2L (Sune set) and ZBLL (all 472, grouped by shape); a 3x3 blindfold practice page (scramble cycle tracing, letter pairs, sticker recognition).
   - Formula data lives in `src/lib/data/*.ts`; navigation lives in `src/lib/nav.ts`.
 - **Language:** Traditional Chinese (Taiwan), `zh-Hant-TW`. Cube notation (R U R' U') stays in standard Latin notation.
 - **Future scope:** more puzzles and methods will be added (for example 2x2, 4x4, a beginner LBL method). Navigation and page structure must scale beyond one puzzle.

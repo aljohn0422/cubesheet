@@ -65,10 +65,22 @@ export const navGroups: NavGroup[] = [
         title: "三階 進階",
         items: [
             {
+                title: "十字 +1",
+                url: "/333advanced/cross-plus-one",
+                summary: "跟比賽高手學：十字做完怎麼順順接到前兩組 F2L。",
+            },
+            {
                 title: "進階 F2L",
                 url: "/333advanced/f2l",
                 summary: "Sune 系列。",
                 extent: sumAlgs(advancedF2lSections),
+            },
+            {
+                title: "ZBLL",
+                url: "/333advanced/zbll",
+                summary: "依形狀與小組分類。",
+                // zbll.json 的筆數。不從資料 import：nav 每一頁都會載入，160KB 的 JSON 只該跟著 ZBLL 頁
+                extent: 472,
             },
         ],
     },

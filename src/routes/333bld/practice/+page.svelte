@@ -1,10 +1,10 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { RotateCcw } from "lucide-svelte";
+    import { Shuffle } from "lucide-svelte";
     import Paragraph from "$lib/components/paragraph.svelte";
     import Section from "$lib/components/section.svelte";
     import CubeNet from "$lib/components/blindfold/cube-net.svelte";
-    import Segmented from "$lib/components/blindfold/segmented.svelte";
+    import Segmented from "$lib/components/segmented.svelte";
     import Sticker from "$lib/components/blindfold/sticker.svelte";
     import { doScramble } from "$lib/blindfold/cube";
     import { findCycle, findLetter, pieceLetterGroups } from "$lib/blindfold/cycles";
@@ -150,11 +150,11 @@
                     </p>
                     <button
                         type="button"
-                        class="inline-flex size-11 shrink-0 items-center justify-center rounded-lg border border-ink transition-colors hover:bg-neutral-100"
-                        aria-label="換一組打亂"
+                        class="inline-flex h-11 shrink-0 items-center gap-2 rounded-lg border border-ink px-4 text-[15px] font-semibold transition-colors hover:bg-neutral-100"
                         onclick={newScramble}
                     >
-                        <RotateCcw class="size-5" aria-hidden="true" />
+                        <Shuffle class="size-4" aria-hidden="true" />
+                        換一組
                     </button>
                 </div>
                 <div class="mt-5">
@@ -203,7 +203,7 @@
             <Segmented label="塊的種類" options={pieceTypes} value={pairType} onselect={selectPairType} />
             <button
                 type="button"
-                class="mt-5 block w-full rounded-xl border border-ink py-10 text-center text-[clamp(3.5rem,11vw,6rem)] font-extrabold leading-none tracking-[0.2em] transition-colors hover:bg-neutral-100 active:bg-neutral-200"
+                class="mt-5 block w-full rounded-xl border border-ink py-10 text-center text-[clamp(3.5rem,11vw,6rem)] font-extrabold leading-none tracking-[0.2em] [text-indent:0.2em] transition-colors hover:bg-neutral-100 active:bg-neutral-200"
                 aria-label="字母 {pair.split('').join(' ')}，換一組"
                 onclick={newPair}
             >
@@ -227,7 +227,10 @@
                     <span class="text-[clamp(3.5rem,11vw,6rem)] font-extrabold leading-none">{recogItem.letter}</span>
                     <span class="text-[15px] tabular-nums text-neutral-600">{recogItem.location}</span>
                 {:else}
-                    <span class="text-[clamp(3.5rem,11vw,6rem)] font-extrabold leading-none text-neutral-300">?</span>
+                    <!-- 還沒翻開：虛線框，跟圖解載入中的「還沒貼上的圖」同一個語彙 -->
+                    <span class="text-[clamp(3.5rem,11vw,6rem)] leading-none" aria-hidden="true">
+                        <span class="block h-[1em] w-[0.72em] rounded-md border-2 border-dashed border-neutral-400"></span>
+                    </span>
                     <span class="text-[15px] text-transparent" aria-hidden="true">—</span>
                 {/if}
             </button>

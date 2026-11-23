@@ -28,3 +28,6 @@ vite.config.ts.timestamp-*
 .impeccable/live/
 .impeccable/hook.cache.json
 .impeccable/config.local.json
+
+# reco.nz 原始抓取資料（只留本機，不進版本控制）
+.reco-cache/

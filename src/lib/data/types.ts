@@ -7,6 +7,8 @@ export interface AlgCase {
     alternatives?: string[];
     /** VisualCube 箭頭語法，例如 "U0U2,U2U6" */
     arrow?: string;
+    /** 打亂狀態；有設定時圖解與動畫都從這個狀態開始（ZBLL 用） */
+    setup?: string;
 }
 
 /** 公式表裡的分隔列（同一段落內再分組） */
