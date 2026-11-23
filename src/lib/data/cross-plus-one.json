@@ -1,0 +1,1072 @@
+{
+  "examples": [
+    {
+      "id": "12870",
+      "solver": "Seung Hyuk Nahm",
+      "time": "5.60",
+      "date": "2026-03-24",
+      "comp": "Katano Spring 2026",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/12870",
+      "scramble": "D B R' B2 F U2 B' F2 L2 B' U2 R D U' F' U2 F' U2",
+      "inspection": "x2 y",
+      "cross": {
+        "moves": "R2 D L' F'",
+        "stm": 4,
+        "label": "十字",
+        "slots": [],
+        "pairs": []
+      },
+      "f2l": [
+        {
+          "moves": "R' U R",
+          "stm": 3,
+          "label": "第一組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 3,
+              "edge": 9
+            }
+          ]
+        },
+        {
+          "moves": "U D R U' R' u'",
+          "stm": 6,
+          "label": "第二組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12146",
+      "solver": "Yiheng Wang",
+      "time": "4.25",
+      "date": "2025-09-02",
+      "comp": "Zhengzhou Summer III 2025",
+      "reconstructor": "Gordon Leung",
+      "url": "https://reco.nz/solve/12146",
+      "scramble": "B' D2 F2 R2 B2 R2 D2 L2 F' R' B2 F2 R D2 R2 D L F D2",
+      "inspection": "z2",
+      "cross": {
+        "moves": "U D B2 R2' U' D",
+        "stm": 6,
+        "label": "十字",
+        "slots": [],
+        "pairs": []
+      },
+      "f2l": [
+        {
+          "moves": "L U L'",
+          "stm": 3,
+          "label": "第一組",
+          "slots": [
+            "左後"
+          ],
+          "pairs": [
+            {
+              "corner": 1,
+              "edge": 10
+            }
+          ]
+        },
+        {
+          "moves": "R U R2' U' R",
+          "stm": 5,
+          "label": "第二組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 2,
+              "edge": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11964",
+      "solver": "Teodor Zajder",
+      "time": "5.09",
+      "date": "2025-07-07",
+      "comp": "Rubik's WCA World Championship 2025",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/11964",
+      "scramble": "B2 U2 F2 D B2 U F2 D R2 D L U2 L' F2 D L D2 R' B'",
+      "inspection": "x2",
+      "cross": {
+        "moves": "U2' F2 R2",
+        "stm": 3,
+        "label": "十字",
+        "slots": [],
+        "pairs": []
+      },
+      "f2l": [
+        {
+          "moves": "U' R' U R",
+          "stm": 4,
+          "label": "第一組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        },
+        {
+          "moves": "U' L U' L' U L U L'",
+          "stm": 8,
+          "label": "第二組",
+          "slots": [
+            "左後"
+          ],
+          "pairs": [
+            {
+              "corner": 3,
+              "edge": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11979",
+      "solver": "Olaf Kuźmiński",
+      "time": "4.76",
+      "date": "2025-07-07",
+      "comp": "Rubik's WCA World Championship 2025",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/11979",
+      "scramble": "B2 U2 F2 D B2 U F2 D R2 D L U2 L' F2 D L D2 R' B'",
+      "inspection": "x2",
+      "cross": {
+        "moves": "U2' F2 R2",
+        "stm": 3,
+        "label": "十字",
+        "slots": [],
+        "pairs": []
+      },
+      "f2l": [
+        {
+          "moves": "U' R' U R",
+          "stm": 4,
+          "label": "第一組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        },
+        {
+          "moves": "U' L U' L' U L U L'",
+          "stm": 8,
+          "label": "第二組",
+          "slots": [
+            "左後"
+          ],
+          "pairs": [
+            {
+              "corner": 3,
+              "edge": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11999",
+      "solver": "Timofei Tarasenko",
+      "time": "5.82",
+      "date": "2025-07-07",
+      "comp": "Rubik's WCA World Championship 2025",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/11999",
+      "scramble": "B2 U2 F2 D B2 U F2 D R2 D L U2 L' F2 D L D2 R' B'",
+      "inspection": "x2",
+      "cross": {
+        "moves": "U2' F2 R2",
+        "stm": 3,
+        "label": "十字",
+        "slots": [],
+        "pairs": []
+      },
+      "f2l": [
+        {
+          "moves": "U' R' U R",
+          "stm": 4,
+          "label": "第一組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        },
+        {
+          "moves": "U R U' R' U' L U L'",
+          "stm": 8,
+          "label": "第二組",
+          "slots": [
+            "左後"
+          ],
+          "pairs": [
+            {
+              "corner": 3,
+              "edge": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12643",
+      "solver": "Viraj Dhameja",
+      "time": "7.02",
+      "date": "2026-02-23",
+      "comp": "Singapore Championship 2026",
+      "reconstructor": "Kunal Oak",
+      "url": "https://reco.nz/solve/12643",
+      "scramble": "R' U2 B2 D B R F U F L2 D R2 D2 F2 B2 U F2 L",
+      "inspection": "z2",
+      "cross": {
+        "moves": "L F2 R D' F D'",
+        "stm": 6,
+        "label": "十字",
+        "slots": [],
+        "pairs": []
+      },
+      "f2l": [
+        {
+          "moves": "L' U L",
+          "stm": 3,
+          "label": "第一組",
+          "slots": [
+            "左前"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        },
+        {
+          "moves": "R U R' L U2 L'",
+          "stm": 6,
+          "label": "第二組",
+          "slots": [
+            "左後"
+          ],
+          "pairs": [
+            {
+              "corner": 1,
+              "edge": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12721",
+      "solver": "Max Park",
+      "time": "4.96",
+      "date": "2026-03-10",
+      "comp": "Temecula Valley Spring 2026",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/12721",
+      "scramble": "D R U' L' D2 B2 F2 R2 U2 L R2 B R' B R U L' F2 D'",
+      "inspection": "x2 y",
+      "cross": {
+        "moves": "D L' U L' R2",
+        "stm": 5,
+        "label": "十字",
+        "slots": [],
+        "pairs": []
+      },
+      "f2l": [
+        {
+          "moves": "U' R' U R",
+          "stm": 4,
+          "label": "第一組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 3,
+              "edge": 9
+            }
+          ]
+        },
+        {
+          "moves": "y' U R' U R",
+          "stm": 4,
+          "label": "第二組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12815",
+      "solver": "Leo Borromeo",
+      "time": "5.77",
+      "date": "2026-03-18",
+      "comp": "Philippine Championship 2025",
+      "reconstructor": "eff",
+      "url": "https://reco.nz/solve/12815",
+      "scramble": "B' D R2 D2 B D2 B2 U2 B L2 F2 U' B2 L B' U' F L2 R2",
+      "inspection": "x2 y'",
+      "cross": {
+        "moves": "L2 D' L' F' D",
+        "stm": 5,
+        "label": "十字",
+        "slots": [],
+        "pairs": []
+      },
+      "f2l": [
+        {
+          "moves": "R' U R",
+          "stm": 3,
+          "label": "第一組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 1,
+              "edge": 10
+            }
+          ]
+        },
+        {
+          "moves": "y' R' F U' F' R",
+          "stm": 5,
+          "label": "第二組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 2,
+              "edge": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11987",
+      "solver": "Luke Griesser",
+      "time": "5.67",
+      "date": "2025-07-07",
+      "comp": "Rubik's WCA World Championship 2025",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/11987",
+      "scramble": "D R2 D2 L2 U' L2 F2 D2 L2 U' B L' B D' U' L' D2 B2 R2 F'",
+      "inspection": "x2 y",
+      "cross": {
+        "moves": "R U F R'",
+        "stm": 4,
+        "label": "十字",
+        "slots": [],
+        "pairs": []
+      },
+      "f2l": [
+        {
+          "moves": "d R U R2' U' R",
+          "stm": 6,
+          "label": "第一組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        },
+        {
+          "moves": "U' R U' R' L U2 L'",
+          "stm": 7,
+          "label": "第二組",
+          "slots": [
+            "左後"
+          ],
+          "pairs": [
+            {
+              "corner": 3,
+              "edge": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11989",
+      "solver": "Luke Griesser",
+      "time": "5.73",
+      "date": "2025-07-07",
+      "comp": "Rubik's WCA World Championship 2025",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/11989",
+      "scramble": "B2 U2 F2 D B2 U F2 D R2 D L U2 L' F2 D L D2 R' B'",
+      "inspection": "x2",
+      "cross": {
+        "moves": "U2 R2' F2",
+        "stm": 3,
+        "label": "十字",
+        "slots": [],
+        "pairs": []
+      },
+      "f2l": [
+        {
+          "moves": "U R U' R' U' L U L'",
+          "stm": 8,
+          "label": "第一組",
+          "slots": [
+            "左後"
+          ],
+          "pairs": [
+            {
+              "corner": 3,
+              "edge": 9
+            }
+          ]
+        },
+        {
+          "moves": "U' R U R2' U' R",
+          "stm": 6,
+          "label": "第二組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12002",
+      "solver": "Dylan Miller",
+      "time": "5.46",
+      "date": "2025-07-07",
+      "comp": "Rubik's WCA World Championship 2025",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/12002",
+      "scramble": "D R2 D2 L2 U' L2 F2 D2 L2 U' B L' B D' U' L' D2 B2 R2 F'",
+      "inspection": "x2 y",
+      "cross": {
+        "moves": "R U F R'",
+        "stm": 4,
+        "label": "十字",
+        "slots": [],
+        "pairs": []
+      },
+      "f2l": [
+        {
+          "moves": "d R U R2' U' R",
+          "stm": 6,
+          "label": "第一組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        },
+        {
+          "moves": "U' R U' R' L U2 L'",
+          "stm": 7,
+          "label": "第二組",
+          "slots": [
+            "左後"
+          ],
+          "pairs": [
+            {
+              "corner": 3,
+              "edge": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12540",
+      "solver": "Ruihang Xu",
+      "time": "6.33",
+      "date": "2026-02-07",
+      "comp": "Guangdong Open - Revival & Rival 2026",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/12540",
+      "scramble": "U' L2 U2 F2 L2 F2 U B2 U B F' R B2 U R2 B' R D F2 D2",
+      "inspection": "x2 y",
+      "cross": {
+        "moves": "R' D R L U2 F",
+        "stm": 6,
+        "label": "十字",
+        "slots": [],
+        "pairs": []
+      },
+      "f2l": [
+        {
+          "moves": "U' R U R'",
+          "stm": 4,
+          "label": "第一組",
+          "slots": [
+            "右前"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        },
+        {
+          "moves": "U R' F U F' U' R",
+          "stm": 7,
+          "label": "第二組",
+          "slots": [
+            "左前"
+          ],
+          "pairs": [
+            {
+              "corner": 1,
+              "edge": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12636",
+      "solver": "Matty Hiroto Inaba",
+      "time": "3.64",
+      "date": "2026-02-22",
+      "comp": "PBs in Palisades Open 2026",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/12636",
+      "scramble": "U F2 U' B2 U' B2 F2 D' R2 U' R F' R' F' L2 U' L' D2 L2 F'",
+      "inspection": "x2 y",
+      "cross": {
+        "moves": "R2 B R2' F2 R D",
+        "stm": 6,
+        "label": "xcross",
+        "slots": [
+          "左後"
+        ],
+        "pairs": [
+          {
+            "corner": 2,
+            "edge": 11
+          }
+        ]
+      },
+      "f2l": [
+        {
+          "moves": "U2 L' U' L",
+          "stm": 4,
+          "label": "第二組",
+          "slots": [
+            "左前"
+          ],
+          "pairs": [
+            {
+              "corner": 1,
+              "edge": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12993",
+      "solver": "Brian Johnson",
+      "time": "5.14",
+      "date": "2026-04-06",
+      "comp": "Racine Rendezvous 2026",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/12993",
+      "scramble": "L' D' F' D' B' U2 F' L2 B L2 F' D U L F2 D' L D'",
+      "inspection": "z2 y",
+      "cross": {
+        "moves": "F' R' F D2 R D",
+        "stm": 6,
+        "label": "xcross",
+        "slots": [
+          "右後"
+        ],
+        "pairs": [
+          {
+            "corner": 1,
+            "edge": 10
+          }
+        ]
+      },
+      "f2l": [
+        {
+          "moves": "U2 L U' L'",
+          "stm": 4,
+          "label": "第二組",
+          "slots": [
+            "左後"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12922",
+      "solver": "Radosław Marcinek",
+      "time": "5.18",
+      "date": "2026-03-31",
+      "comp": "Polish Championship 2025",
+      "reconstructor": "eff",
+      "url": "https://reco.nz/solve/12922",
+      "scramble": "F2 L2 D' L' F2 U B' F2 D2 R2 L2 D F2 D L' B L2 F",
+      "inspection": "z2",
+      "cross": {
+        "moves": "U' F D2 R U' D R",
+        "stm": 7,
+        "label": "xcross",
+        "slots": [
+          "左後"
+        ],
+        "pairs": [
+          {
+            "corner": 1,
+            "edge": 10
+          }
+        ]
+      },
+      "f2l": [
+        {
+          "moves": "U L' U L",
+          "stm": 4,
+          "label": "第二組",
+          "slots": [
+            "左前"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11982",
+      "solver": "Max Park",
+      "time": "5.21",
+      "date": "2025-07-07",
+      "comp": "Rubik's WCA World Championship 2025",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/11982",
+      "scramble": "D R2 D2 L2 U' L2 F2 D2 L2 U' B L' B D' U' L' D2 B2 R2 F'",
+      "inspection": "x2 y",
+      "cross": {
+        "moves": "D' L F L D",
+        "stm": 5,
+        "label": "xcross",
+        "slots": [
+          "左前"
+        ],
+        "pairs": [
+          {
+            "corner": 1,
+            "edge": 10
+          }
+        ]
+      },
+      "f2l": [
+        {
+          "moves": "R U' R' d R' U' R",
+          "stm": 7,
+          "label": "第二組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11992",
+      "solver": "Luke Garrett",
+      "time": "4.68",
+      "date": "2025-07-07",
+      "comp": "Rubik's WCA World Championship 2025",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/11992",
+      "scramble": "D R2 D2 L2 U' L2 F2 D2 L2 U' B L' B D' U' L' D2 B2 R2 F'",
+      "inspection": "x2",
+      "cross": {
+        "moves": "D' F R F D",
+        "stm": 5,
+        "label": "xcross",
+        "slots": [
+          "右前"
+        ],
+        "pairs": [
+          {
+            "corner": 1,
+            "edge": 10
+          }
+        ]
+      },
+      "f2l": [
+        {
+          "moves": "L' U' L U R' U' R",
+          "stm": 7,
+          "label": "第二組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11997",
+      "solver": "Timofei Tarasenko",
+      "time": "4.28",
+      "date": "2025-07-07",
+      "comp": "Rubik's WCA World Championship 2025",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/11997",
+      "scramble": "D R2 D2 L2 U' L2 F2 D2 L2 U' B L' B D' U' L' D2 B2 R2 F'",
+      "inspection": "x2 y",
+      "cross": {
+        "moves": "D' L F L D",
+        "stm": 5,
+        "label": "xcross",
+        "slots": [
+          "左前"
+        ],
+        "pairs": [
+          {
+            "corner": 1,
+            "edge": 10
+          }
+        ]
+      },
+      "f2l": [
+        {
+          "moves": "R U' R' d R' U' R",
+          "stm": 7,
+          "label": "第二組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11972",
+      "solver": "Seung Hyuk Nahm",
+      "time": "6.58",
+      "date": "2025-07-07",
+      "comp": "Rubik's WCA World Championship 2025",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/11972",
+      "scramble": "D R2 D2 L2 U' L2 F2 D2 L2 U' B L' B D' U' L' D2 B2 R2 F'",
+      "inspection": "x2 y",
+      "cross": {
+        "moves": "D' F L U' L' U L u",
+        "stm": 8,
+        "label": "xcross",
+        "slots": [
+          "左後"
+        ],
+        "pairs": [
+          {
+            "corner": 1,
+            "edge": 10
+          }
+        ]
+      },
+      "f2l": [
+        {
+          "moves": "U2' F' R' U' R F",
+          "stm": 6,
+          "label": "第二組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 2,
+              "edge": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12033",
+      "solver": "Yiheng Wang",
+      "time": "3.83",
+      "date": "2025-07-26",
+      "comp": "Taizhou Open 2025",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/12033",
+      "scramble": "L2 B2 U F2 U2 B2 D' R2 D2 L2 F D' F' L2 B2 L' F' D' B' R2",
+      "inspection": "z2 y",
+      "cross": {
+        "moves": "R D2 U' l U' l' U D",
+        "stm": 8,
+        "label": "xcross",
+        "slots": [
+          "左後"
+        ],
+        "pairs": [
+          {
+            "corner": 0,
+            "edge": 8
+          }
+        ]
+      },
+      "f2l": [
+        {
+          "moves": "R' U' R L' U' L",
+          "stm": 6,
+          "label": "第二組",
+          "slots": [
+            "左前"
+          ],
+          "pairs": [
+            {
+              "corner": 3,
+              "edge": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12480",
+      "solver": "Radosław Marcinek",
+      "time": "5.06",
+      "date": "2026-01-06",
+      "comp": "Gift Packs Niepołomice 2025",
+      "reconstructor": "Kunal Oak",
+      "url": "https://reco.nz/solve/12480",
+      "scramble": "R2 D' B U2 R2 L2 U' F' B2 D2 R U2 L D2 F2 U2 R' U2 L'",
+      "inspection": "x2",
+      "cross": {
+        "moves": "R' U2' R2 D R2' F R D",
+        "stm": 8,
+        "label": "xcross",
+        "slots": [
+          "左後"
+        ],
+        "pairs": [
+          {
+            "corner": 3,
+            "edge": 9
+          }
+        ]
+      },
+      "f2l": [
+        {
+          "moves": "R' U R U' R' U' R",
+          "stm": 7,
+          "label": "第二組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 0,
+              "edge": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12412",
+      "solver": "Max Siauw",
+      "time": "3.94",
+      "date": "2025-12-22",
+      "comp": "Portland in a Pyra Tree 2025",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/12412",
+      "scramble": "D' R2 U2 B2 D2 U' B2 U R2 U L B L' F2 U B' D' B2 U' B' R'",
+      "inspection": "x2 y",
+      "cross": {
+        "moves": "r U' r' D2 F' U' R U' R' D2",
+        "stm": 10,
+        "label": "xcross",
+        "slots": [
+          "左後"
+        ],
+        "pairs": [
+          {
+            "corner": 2,
+            "edge": 11
+          }
+        ]
+      },
+      "f2l": [
+        {
+          "moves": "U R U R2' U' R",
+          "stm": 6,
+          "label": "第二組",
+          "slots": [
+            "右後"
+          ],
+          "pairs": [
+            {
+              "corner": 3,
+              "edge": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12226",
+      "solver": "Teodor Zajder",
+      "time": "4.63",
+      "date": "2025-09-30",
+      "comp": "Energy Cube Białołęka 2025",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/12226",
+      "scramble": "R D R' D2 R2 U L2 B' R' D2 R2 B2 U D2 L2 D' R2 F' U2",
+      "inspection": "x2 y",
+      "cross": {
+        "moves": "R U' r2' U' R U R U R' D",
+        "stm": 10,
+        "label": "xcross",
+        "slots": [
+          "右後"
+        ],
+        "pairs": [
+          {
+            "corner": 4,
+            "edge": 8
+          }
+        ]
+      },
+      "f2l": [
+        {
+          "moves": "y' U' L' U' L",
+          "stm": 4,
+          "label": "第二組",
+          "slots": [
+            "左前"
+          ],
+          "pairs": [
+            {
+              "corner": 7,
+              "edge": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "14012",
+      "solver": "Ruihang Xu",
+      "time": "3.81",
+      "date": "2026-07-19",
+      "comp": "Nanchang Summer 2026",
+      "reconstructor": "Stewy",
+      "url": "https://reco.nz/solve/14012",
+      "scramble": "F' B U2 R D F' R' D2 R' B' R2 D2 B' R2 D2 F R2 U2 B2",
+      "inspection": "z2",
+      "cross": {
+        "moves": "R' D R U' R' D2' R' D",
+        "stm": 8,
+        "label": "xcross",
+        "slots": [
+          "左前"
+        ],
+        "pairs": [
+          {
+            "corner": 0,
+            "edge": 8
+          }
+        ]
+      },
+      "f2l": [
+        {
+          "moves": "R U' R' y L' U L",
+          "stm": 6,
+          "label": "第二組",
+          "slots": [
+            "左前"
+          ],
+          "pairs": [
+            {
+              "corner": 3,
+              "edge": 9
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
