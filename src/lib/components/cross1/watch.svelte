@@ -3,7 +3,6 @@
     import { crossMask, type CrossExample } from "$lib/data/cross-plus-one";
     import CubeStage from "./cube-stage.svelte";
 
-    // 高手的十字接前兩組 F2L，照 reconstruction 原本的步驟一段一段播
     let { example }: { example: CrossExample } = $props();
 
     const segments = $derived([
@@ -14,9 +13,7 @@
         ...example.f2l,
     ]);
     let index = $state(0);
-    // 每一步 F2L 要不要顯示貼紙（以步驟位置記），預設全部顯示
     let hidden = $state<Set<number>>(new Set());
-    // 換例子時從頭開始，貼紙全部顯示
     $effect(() => {
         example.id;
         index = 0;
@@ -33,26 +30,21 @@
     const setup = $derived([example.scramble, ...segments.slice(0, index).map((s) => s.moves)].join(" "));
 
     let stage: CubeStage;
-    // 動畫盡量大：桌面 440px，手機縮到畫面寬（扣掉左右邊距）
     let viewport = $state(1024);
     const stageSize = $derived(Math.min(440, viewport - 40));
     let playing = $state(false);
     let atStart = $state(true);
     let atEnd = $state(false);
 
-    // 同公式卡播放器的按鈕樣式：圓角、細墨線；停用時「翻面」斜線
     const iconButton =
         "inline-flex size-11 items-center justify-center rounded-lg border border-ink transition-colors disabled:pointer-events-none disabled:text-ink/25";
 </script>
 
 <svelte:window bind:innerWidth={viewport} />
 
-<!-- 動畫為主、步驟清單為輔：清單最寬 24rem -->
 <div class="grid gap-8 xl:grid-cols-[auto_minmax(0,24rem)] xl:items-start">
     <div class="flex flex-col items-center gap-3">
         <CubeStage bind:this={stage} bind:playing bind:atStart bind:atEnd {setup} alg={segments[index]?.moves} {mask} size={stageSize} />
-        <!-- 重置（含視角）｜上一步驟、退一步、播放、進一步、下一步驟。換步驟只跳過去，不自動播；
-             退一步／進一步只在目前這個步驟裡面走 -->
         <div class="flex items-center gap-2" role="group" aria-label="播放控制">
             <button type="button" class="{iconButton} bg-paper hover:bg-neutral-100" aria-label="回到這一步驟開頭，視角也重置" onclick={() => stage.reset()}>
                 <RotateCcw class="size-5" aria-hidden="true" />
@@ -112,7 +104,6 @@
         </p>
     </div>
 
-    <!-- 步驟清單：點任何一步直接跳過去；有放好組的步驟，右邊可以勾選要不要顯示那幾塊的貼紙 -->
     <div>
         <p class="flex justify-end px-1 pb-1 text-[13px] font-semibold text-neutral-600" aria-hidden="true">貼紙</p>
         <ol class="divide-y divide-neutral-300 border-y border-ink">

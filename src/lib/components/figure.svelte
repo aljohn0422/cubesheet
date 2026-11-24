@@ -1,7 +1,6 @@
 <script lang="ts">
     import type { Snippet } from "svelte";
 
-    // 插圖：一組並排的公式卡（表格線），下面一行灰色圖說
     let { caption, children }: { caption: string; children: Snippet } = $props();
 </script>
 

@@ -31,13 +31,11 @@
     </p>
 </div>
 
-<!-- 每個分組一張表：有學習順序的分組會編號；沒有網址的是尚未收錄的步驟 -->
 {#each navGroups as group (group.title)}
     <Section title={group.title} flush>
         <ol class="max-w-[46rem]">
             {#each group.items as item, i (item.title)}
                 <li class="border-b border-neutral-300 last:border-ink">
-                    <!-- 有網址的是連結；沒有的是尚未收錄的步驟 -->
                     <svelte:element
                         this={item.url ? "a" : "div"}
                         href={item.url}

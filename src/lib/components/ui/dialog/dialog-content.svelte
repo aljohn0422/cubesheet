@@ -17,8 +17,6 @@
 		children: Snippet;
 	} = $props();
 
-	// 內容裡標了 data-autofocus 的元素（例如播放鍵）優先取得焦點，而不是第一顆按鈕。
-	// 開啟當下內容可能還沒掛上，所以等下一格畫面再找；找不到就退回第一個可聚焦元素。
 	function handleOpenAutoFocus(event: Event) {
 		onOpenAutoFocus?.(event);
 		if (event.defaultPrevented) return;

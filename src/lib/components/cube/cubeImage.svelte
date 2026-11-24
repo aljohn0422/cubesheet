@@ -1,11 +1,8 @@
 <script lang="ts">
 
-    // 參數沿用 VisualCube 的 query param 語意，由 sr-visualizer 在瀏覽器端畫成 SVG，
-    // 不再依賴外部圖片服務。
     let {
         alg,
         size = 100,
-        /** 方塊邊長（3 = 三階） */
         pzl = 3,
         view = "plan",
         stage = undefined as string | undefined,
@@ -45,7 +42,6 @@
             fc,
             cc,
         };
-        // sr-visualizer 的 parser 用 decodeURIComponent，不能用 URLSearchParams（空白會變成 "+"）
         return Object.entries(params)
             .filter(([, value]) => value !== undefined)
             .map(([key, value]) => `${key}=${encodeURIComponent(value!)}`)
@@ -57,7 +53,6 @@
         let cancelled = false;
         status = "loading";
 
-        // svg.js 在 import 時就會碰 window，只能在瀏覽器端動態載入
         Promise.all([
             import("sr-visualizer"),
             import("sr-visualizer/dist/lib/cube/parsing/options"),
@@ -65,7 +60,6 @@
             .then(([{ cubeSVG, Masking }, { parseOptions }]) => {
                 if (cancelled) return;
                 const options = parseOptions(query);
-                // 舊的 VisualCube 會默默忽略不認得的 stage，sr-visualizer 則會直接丟錯
                 if (
                     options.mask &&
                     !(Object.values(Masking) as string[]).includes(options.mask)
@@ -95,10 +89,8 @@
     aria-hidden="true"
 >
     {#if status === "loading"}
-        <!-- 還沒畫好：虛線框，像還沒貼上的圖 -->
         <div class="absolute inset-0 rounded-md border border-dashed border-neutral-400"></div>
     {:else if status === "error"}
-        <!-- 紅色只用在錯誤 -->
         <div class="absolute inset-0 flex items-center justify-center rounded-md border border-errata px-1 text-center text-[13px] leading-tight text-errata">
             圖片無法顯示
         </div>
