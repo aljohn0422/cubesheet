@@ -3,8 +3,6 @@
     import { anchorHref } from "$lib/anchor";
     import { navGroups } from "$lib/nav";
 
-    // 目錄：桌面版的左欄與手機版的抽屜共用。分組再多也只是往下延伸。
-    // 點任何連結時呼叫（手機抽屜用來收起；同頁錨點不會觸發 afterNavigate）
     let { onnavigate }: { onnavigate?: () => void } = $props();
 
     const isActive = (url: string) => page.url.pathname === url;
@@ -16,7 +14,6 @@
 </script>
 
 <nav aria-label="目錄" class="text-ink">
-    <!-- 線畫在外層，圓角的列只負責底色，線才不會跟著彎 -->
     <div class="divide-y divide-neutral-300 border-y border-ink">
         <div>
             <a
@@ -31,7 +28,6 @@
         </div>
     </div>
 
-    <!-- 還沒有任何頁面的分組（全部未收錄）不顯示在目錄 -->
     {#each navGroups.filter((g) => g.items.some((item) => item.url)) as group (group.title)}
         <p class="mt-7 px-2 pb-1.5 text-[13px] font-semibold text-neutral-600">{group.title}</p>
         <ul class="border-t border-ink">

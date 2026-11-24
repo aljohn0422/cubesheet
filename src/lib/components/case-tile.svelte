@@ -1,13 +1,10 @@
 <script lang="ts">
     import CubeImage from "./cube/cubeImage.svelte";
 
-    // 篩選用的圖示格：上面一張小圖解，下面標籤。
-    // 跟其他控制項一樣是 1px 墨框；選中只用一種標示：標籤反白。
     let {
         label,
         selected,
         onclick,
-        /** 會被復原的公式（圖解的 case 參數）；沒有時顯示「全部」的格子 */
         alg = undefined as string | undefined,
         stage = undefined as string | undefined,
     }: {
@@ -28,7 +25,6 @@
     {#if alg}
         <CubeImage {alg} {stage} size={52} />
     {:else}
-        <!-- 「全部」：一面空白的 3x3，用方塊自己的語彙，不用通用 UI 圖示 -->
         <svg viewBox="0 0 52 52" class="size-[52px]" aria-hidden="true">
             {#each [0, 1, 2] as row}
                 {#each [0, 1, 2] as col}

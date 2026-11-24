@@ -6,7 +6,6 @@
     import PlayerCard from "./playerCard.svelte";
     import { PLAYER_MASKS } from "./presets";
 
-    // 2D 圖的參數（view、arrow、rotation、fc…）直接轉給 CubeImage，預設值只在那裡定義一次
     type ImageProps = Omit<ComponentProps<typeof CubeImage>, "alg" | "stage" | "size" | "pzl">;
 
     let {
@@ -15,17 +14,8 @@
         algDisplay,
         alternatives = [],
         stage,
-        /** 方塊種類（cubing.js 的 puzzle id），例如 "2x2x2"、"4x4x4" */
         puzzle = "3x3x3",
-        /**
-         * 這一格佔表格的幾列（1 + 同段落最多的替代公式數）。大於 1 時用 subgrid，
-         * 同一排的卡片共用列高：主公式那列一樣高、每條「或」也對齊，橫線連成一直線。
-         */
         rows = 1,
-        /**
-         * 打亂狀態（黃頂）。有設定時，圖解與動畫都從這個狀態開始，
-         * 公式做完可能還差一個 U；沒設定時，圖解是「做完公式會復原」的狀態。
-         */
         setup,
         ...image
     }: {
@@ -39,33 +29,24 @@
         setup?: string;
     } & ImageProps = $props();
 
-    // 以下三個 regex 假設公式只有單層、不重複的括號分組（目前資料都是如此）
-
-    /** 拿掉分組用的括號，給 2D 圖使用 */
     function stripGrouping(alg: string) {
         return alg.replace(/[()]/g, "").replace(/\s+/g, " ").trim();
     }
 
-    /** 步數不含整顆轉向（x、y、z） */
     function countMoves(alg: string) {
         return stripGrouping(alg)
             .split(" ")
             .filter((move) => move && !/^[xyz]/.test(move)).length;
     }
 
-    /** 斷行單位：括號分組不拆開，其餘以單步為單位 */
     function toChunks(alg: string) {
         return alg.match(/\([^)]*\)|\S+/g) ?? [];
     }
 
     const displayAlg = $derived(algDisplay ?? alg);
-    // 遮罩是依三階的方塊排列寫的，其他階數一律全彩
     const playerMask = $derived(stage && puzzle === "3x3x3" ? PLAYER_MASKS[stage] : undefined);
-    // VisualCube 的 pzl 參數只要邊長
     const cubeSize = $derived(parseInt(puzzle) || 3);
-    // 圖解的 case 參數是「會被復原的公式」，所以給 setup 的反向
     const imageAlg = $derived(setup ? new Alg(setup).invert().toString() : stripGrouping(alg));
-    // 動畫：cubing.js 預設白頂，先 x2 把黃色翻到頂面，再做 setup
     const playerSetup = $derived(setup ? `x2 ${setup}` : undefined);
 </script>
 
@@ -92,7 +73,6 @@
     </Dialog.Content>
 {/snippet}
 
-<!-- 表格裡的一格：整格都是按鈕，點開看動畫 -->
 <div
     class={rows > 1 ? "grid" : "flex flex-col"}
     style={rows > 1 ? `grid-row: span ${rows}; grid-template-rows: subgrid;` : undefined}

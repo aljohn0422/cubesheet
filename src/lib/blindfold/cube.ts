@@ -1,6 +1,3 @@
-// 3x3 貼紙陣列：faces[面][列][行]，面順序 U L F R B D，值是原本所在的面（也就是顏色）。
-// 白頂綠前（WCA 打亂方向）。從 solv 搬來，邏輯不變。
-
 const U = 0;
 const L = 1;
 const F = 2;
@@ -200,12 +197,11 @@ export function doScramble(scramble: string) {
     return faces
 }
 
-/** 貼紙顏色，索引同面的順序 U L F R B D（白頂綠前） */
 export const STICKER_COLORS = [
-    "#ffffff", // U 白
-    "#FF9800", // L 橘
-    "#43A047", // F 綠
-    "#F44336", // R 紅
-    "#1565C0", // B 藍
-    "#FDD835", // D 黃
+    "#ffffff",
+    "#FF9800",
+    "#43A047",
+    "#F44336",
+    "#1565C0",
+    "#FDD835",
 ];

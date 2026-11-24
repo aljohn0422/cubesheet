@@ -4,31 +4,19 @@ import { ollSections } from "$lib/data/cfop-oll";
 import { pllSections } from "$lib/data/cfop-pll";
 import { sumAlgs } from "$lib/data/util";
 
-/**
- * 網站導覽的唯一來源：目錄、首頁、頁首路徑與 <title> 都從這裡產生。
- *
- * 擴充方式：
- * - 新章節：在對應分組的 `items` 加一筆，並在 src/routes 下建立同網址的頁面。
- * - 新方塊／新解法：在 `navGroups` 加一個分組（例如「二階」「四階」）。
- * - 還沒整理的步驟：不給 `url`，目錄會略過它，首頁會標「未收錄」。
- */
 export interface Chapter {
     title: string;
-    /** 沒有網址代表尚未收錄 */
     url?: string;
     summary: string;
-    /** 收錄的公式數量 */
     extent?: number;
 }
 
 export interface NavGroup {
     title: string;
-    /** 是否有學習順序；首頁會替這組的章節編號 */
     ordered?: boolean;
     items: Chapter[];
 }
 
-/** 網站名稱；分成兩段是首頁大標的斷行位置（只在「的」之後換行） */
 export const SITE_TITLE_LINES = ["給老婆小孩的", "魔術方塊筆記"] as const;
 export const SITE_TITLE = SITE_TITLE_LINES.join("");
 
@@ -79,7 +67,6 @@ export const navGroups: NavGroup[] = [
                 title: "ZBLL",
                 url: "/333advanced/zbll",
                 summary: "依形狀與小組分類。",
-                // zbll.json 的筆數。不從資料 import：nav 每一頁都會載入，160KB 的 JSON 只該跟著 ZBLL 頁
                 extent: 472,
             },
         ],
@@ -96,7 +83,6 @@ export const navGroups: NavGroup[] = [
     },
 ];
 
-/** 依路徑找出目前章節與其所屬群組；首頁或找不到時回傳 undefined */
 export function findNav(pathname: string) {
     for (const group of navGroups) {
         const item = group.items.find((item) => item.url === pathname);

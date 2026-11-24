@@ -1,13 +1,3 @@
-// 分析 .reco-cache/ 裡的 reconstruction，挑出「十字 +1」的教學例子，輸出 src/lib/data/cross-plus-one.json。
-//
-// 做的事：
-// 1. 解析每一筆：選手、時間、打亂、每一步的轉法與註解（inspection / cross / 1st pair…）。
-// 2. 用 cubing.js 重播驗證：白十字在底、十字那一步做完十字完整、之後每一步都至少放好一組，
-//    一路到前兩組 F2L 為止（某一步一次做好更多組時，那幾組也算）。
-// 3. 挑清楚的例子（少轉體、步數短），記下每一步放好的組是哪幾塊（網頁用來決定亮哪些貼紙）。
-//    只留客觀的資料（轉法、步數、放進哪一槽），不產生旁白或解讀。
-//
-// 用法：node scripts/reco/analyze.mjs
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { Alg } from "cubing/alg";
 import { cube3x3x3 } from "cubing/puzzles";
@@ -18,7 +8,6 @@ const OUT = new URL("../../src/lib/data/cross-plus-one.json", import.meta.url);
 const kp = await cube3x3x3.kpuzzle();
 const solved = kp.defaultPattern();
 
-// ── 解析 ─────────────────────────────────────────────
 const decode = (s) =>
     s
         .replace(/&#0*39;|&apos;/g, "'")
@@ -38,7 +27,6 @@ function parse(id, html) {
     const lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
     const at = lines.findIndex((l) => l.includes("reconstruction by"));
     if (at < 1) return null;
-    // 標題可能是「Name - 3.40 3x3 solve」一行，或選手名（連結）自成一行、下一行是「- 3.40 3x3 solve」
     let head = lines[at - 1].match(/^(.*) - ([\d.]+) 3x3 solve/);
     if (!head) {
         const m = lines[at - 1].match(/^- ([\d.]+) 3x3 solve/);
@@ -69,8 +57,6 @@ function parse(id, html) {
     };
 }
 
-// ── 方塊狀態工具 ──────────────────────────────────────
-// 24 種整顆方塊的方向
 const rotations = [""];
 {
     const seen = new Set([key(solved.patternData.CENTERS.pieces)]);
@@ -87,7 +73,6 @@ const rotations = [""];
 function key(a) {
     return a.join(",");
 }
-/** 跟 p 同樣中心配置的「復原狀態」：判斷「相對於中心是否歸位」的基準 */
 function frameOf(p) {
     const c = key(p.patternData.CENTERS.pieces);
     for (const r of rotations) {
@@ -100,7 +85,6 @@ const home = (p, f, orbit, pos) =>
     p.patternData[orbit].pieces[pos] === f.patternData[orbit].pieces[pos] &&
     p.patternData[orbit].orientation[pos] === f.patternData[orbit].orientation[pos];
 
-// 位置編號（cubing.js 3x3）：EDGES UF UR UB UL DF DR DB DL FR FL BR BL；CORNERS UFR URB UBL ULF DRF DFL DLB DBR
 const D_EDGES = [4, 5, 6, 7];
 const SLOTS = {
     FR: { corner: 4, edge: 8, name: "右前" },
@@ -108,15 +92,13 @@ const SLOTS = {
     BL: { corner: 6, edge: 11, name: "左後" },
     BR: { corner: 7, edge: 10, name: "右後" },
 };
-const WHITE_CENTER = 0; // cubing.js 預設 U 是白色
+const WHITE_CENTER = 0;
 
-/** 底層四個十字邊是否都對上中心 */
 function crossSolved(p) {
     const f = frameOf(p);
     return D_EDGES.every((i) => home(p, f, "EDGES", i));
 }
 
-/** 已進槽的 slot（相對於目前中心） */
 function solvedSlots(p) {
     const f = frameOf(p);
     return Object.keys(SLOTS).filter(
@@ -131,12 +113,10 @@ const movesOf = (s) => {
         return null;
     }
 };
-// 合併連續同一面的轉動（U U → U2、U' U → 抵銷），不做跨軸的改寫
 const simplify = (moves) => movesOf(new Alg(moves.join(" ")).experimentalSimplify({ cancel: true }).toString()) ?? moves;
 const isRotation = (m) => /^[xyz]/.test(m);
 const stm = (moves) => moves.filter((m) => !isRotation(m)).length;
 
-/** 這一刻已進槽的組：回傳 [{ slot, corner, edge }]（以塊的身分記） */
 function pairsInSlots(p) {
     return solvedSlots(p).map((slot) => ({
         slot,
@@ -145,7 +125,6 @@ function pairsInSlots(p) {
     }));
 }
 
-// ── 主流程 ─────────────────────────────────────────────
 const ORD = ["第一組", "第二組", "第三組", "第四組"];
 const SHOW_PAIRS = 2;
 const files = (await readdir(CACHE)).filter((f) => f.endsWith(".html"));
@@ -170,14 +149,13 @@ for (const f of files) {
     } catch {
         continue;
     }
-    if (start.patternData.CENTERS.pieces[5] !== WHITE_CENTER) continue; // 只用白十字（白色在底）
+    if (start.patternData.CENTERS.pieces[5] !== WHITE_CENTER) continue;
     stats.white++;
 
     const afterCross = start.applyAlg(crossMoves.join(" "));
     if (!crossSolved(afterCross)) continue;
     const xcrossPairs = pairsInSlots(afterCross);
 
-    // 十字之後一步一步做 F2L，直到至少做好兩組
     const pairSteps = [];
     let p = afterCross;
     let done = xcrossPairs.length;
@@ -189,7 +167,6 @@ for (const f of files) {
             break;
         }
         const moves = simplify(raw);
-        // 用塊的身分判斷「新放好的組」，不能用槽名：寬轉（u、d…）或轉體會讓已放好的組換到別的槽位
         const before = new Set(pairsInSlots(p).map((x) => x.corner));
         const after = p.applyAlg(moves.join(" "));
         const added = pairsInSlots(after).filter((x) => !before.has(x.corner));
@@ -218,9 +195,6 @@ for (const f of files) {
     });
 }
 
-// 挑例子：轉體少、十字加前兩組的步數短的比較清楚。
-// 一般的（十字做完再做第一組）和 xcross 各挑 PER_GROUP 個；同一位選手最多 MAX_PER_SOLVER 個。
-// 至少要有一步 F2L（xxcross 一次做完兩組的不收）。
 const PER_GROUP = 12;
 const MAX_PER_SOLVER = 2;
 const clear = candidates
@@ -239,7 +213,6 @@ for (const wantX of [false, true]) {
 
 const slotNames = (pairs) => pairs.map((x) => SLOTS[x.slot].name);
 const examples = picked.map((c) => {
-    // 每一步放好的組，記塊的身分（cubing.js 編號）；網頁依勾選組出遮罩
     const piecesOf = (pairs) => pairs.map((x) => ({ corner: x.corner, edge: x.edge }));
     const xcross = c.xcrossPairs.length > 0;
     return {
@@ -252,7 +225,6 @@ const examples = picked.map((c) => {
         url: `https://reco.nz/solve/${c.id}`,
         scramble: c.scramble,
         inspection: c.inspection,
-        /** 十字（xcross 時含第一組） */
         cross: {
             moves: c.crossMoves.join(" "),
             stm: stm(c.crossMoves),
@@ -260,7 +232,6 @@ const examples = picked.map((c) => {
             slots: slotNames(c.xcrossPairs),
             pairs: piecesOf(c.xcrossPairs),
         },
-        /** 十字之後的每一步 F2L，做到前兩組為止 */
         f2l: c.pairSteps.map((st) => ({
             moves: st.moves.join(" "),
             stm: stm(st.moves),

@@ -2,18 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── 速查表：黑白、表格線、公式字最大 ─────────────────────────── */
 @layer base {
   :root {
     --ink: 17 17 17;
     --paper: 255 255 255;
     color-scheme: light;
     scrollbar-color: rgb(var(--ink) / 0.35) transparent;
-    /* 錨點跳轉時留出固定頁首（3.5rem）的空間 */
     scroll-padding-top: 5rem;
   }
 
-  /* 沒指定顏色的邊框預設為淺灰（表格內的細線） */
   * {
     border-color: theme("colors.neutral.300");
   }
@@ -40,7 +37,6 @@
 }
 
 @layer components {
-  /* 停用：斜線底，像被劃掉的格子 */
   .face-down {
     background-image: repeating-linear-gradient(
       135deg,
@@ -49,12 +45,6 @@
     );
   }
 
-  /*
-   * 表格線網格：圓角外框（.ruled-frame）包住網格（.ruled-grid）。
-   * 每格只畫右、下兩條線，格線不會重疊加粗；網格向右、下各多出 1px，
-   * 讓最後一欄、最後一列的線藏到外框底下被裁掉，外框四邊都只有一條線。
-   * 用在公式卡片的格子與插圖。
-   */
   .ruled-frame {
     border: 1px solid rgb(var(--ink));
     border-radius: theme("borderRadius.xl");
@@ -70,15 +60,10 @@
   }
 }
 
-/*
- * 3D 播放器「目前這一步」：cubing.js 在 light DOM 的那一步元素加上這個 class，
- * 裡面預設的藍色底用灰階濾掉，只留灰色底色提醒。
- */
 twisty-alg-viewer .twisty-alg-current-move {
   filter: grayscale(1);
 }
 
-/* 列印：頁首、目錄、段落列用 print:hidden 隱藏；格子不要被分頁切斷 */
 @media print {
   .ruled-grid > * {
     break-inside: avoid;

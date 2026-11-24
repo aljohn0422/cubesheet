@@ -9,7 +9,6 @@
     import { indexByName, isCase, jumpItems, sumAlgs } from "$lib/data/util";
 
     const listedCount = sumAlgs(sections);
-    // 插圖直接取公式資料，改公式時不會兩邊不一致
     const byName = indexByName(sections.flatMap((s) => s.algorithms).filter(isCase));
 </script>
 

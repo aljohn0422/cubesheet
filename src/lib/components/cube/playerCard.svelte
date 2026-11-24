@@ -6,27 +6,18 @@
         StepBack,
         StepForward,
     } from "lucide-svelte";
-    // import 時 cubing 會自行註冊 <twisty-player> 與 <twisty-alg-viewer>
     import type { TwistyAlgViewer, TwistyPlayer } from "cubing/twisty";
     import "cubing/twisty";
     import { rememberCamera } from "./camera";
 
     let {
-        /** 可含分組括號，例如 "F (R U R' U') F'"；cubing.js 會照分組顯示 */
         alg,
         puzzle = "3x3x3",
         setup = "x2",
-        /**
-         * setup 對齊公式的哪一端：
-         * "end"：公式做完是 setup 的狀態（一般公式卡：做完就是復原）
-         * "start"：從 setup 的狀態開始做公式（ZBLL：從資料給的打亂狀態開始）
-         */
         anchor = "end",
-        /** cubing.js 自訂遮罩字串（只顯示相關顏色） */
         mask = undefined as string | undefined,
     }: {
         alg: string;
-        /** cubing.js puzzle id，例如 "2x2x2"、"4x4x4" */
         puzzle?: string;
         setup?: string;
         anchor?: "start" | "end";
@@ -42,10 +33,8 @@
     let atEnd = $state(false);
     let speed = $state("1");
 
-    // 以播放器本身的狀態為準：播放結束時按鈕會自動回到「播放」，到頭/到尾時停用單步按鈕
     $effect(() => {
         const model = twistyPlayer.experimentalModel;
-        // 單步動畫期間 playing 也是 true；只有整段播放才算「播放中」
         const onPlaying = (info: { playing: boolean; untilBoundary: string }) => {
             isPlaying = info.playing && info.untilBoundary === "entire-timeline";
         };
@@ -61,20 +50,17 @@
         };
     });
 
-    // 一開始的視角；按「從頭開始」時連視角一起重設
     let resetCamera: () => Promise<void> = async () => {};
     $effect(() => {
         resetCamera = rememberCamera(twistyPlayer);
     });
 
-    // 公式文字：播放時標出目前這一步（樣式見 app.css），點任一步可直接跳過去
     $effect(() => {
         algViewer.twistyPlayer = twistyPlayer;
     });
 
     function step(direction: 1 | -1) {
         const controller = twistyPlayer.controller.animationController;
-        // 關掉「在頭/尾時自動跳到另一端」，否則按鈕停用狀態還沒更新時連按會讓方塊跳位
         controller.play({
             direction,
             untilBoundary: "move",
@@ -90,7 +76,6 @@
         resetCamera();
     }
 
-    // 按鈕：圓角、細墨線；停用時「翻面」露出背面斜線
     const iconButton =
         "inline-flex size-11 items-center justify-center rounded-lg border border-ink transition-colors disabled:pointer-events-none disabled:text-ink/25";
 </script>

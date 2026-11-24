@@ -7,7 +7,6 @@ import Title from "./dialog-title.svelte";
 
 const Root = DialogPrimitive.Root;
 const Trigger = DialogPrimitive.Trigger;
-// Portal / Overlay 給 dialog-content 內部使用
 const Portal = DialogPrimitive.Portal;
 
 export { Root, Trigger, Portal, Overlay, Content, Header, Title };

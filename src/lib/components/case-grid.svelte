@@ -1,7 +1,6 @@
 <script lang="ts">
     import type { Snippet } from "svelte";
 
-    // 公式卡的表格：三欄 → 兩欄 → 一欄，變窄時只減少欄數、不縮小卡片
     let { children }: { children: Snippet } = $props();
 </script>
 

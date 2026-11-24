@@ -1,6 +1,3 @@
-// 從 reco.nz 抓官方 3x3 CFOP reconstruction 的原始 HTML，存在 .reco-cache/（不進 git）。
-// 禮貌抓取：一次一個請求、間隔 1 秒；已經抓過的不重抓。
-// 用法：node scripts/reco/fetch.mjs [列表頁數，預設 6（每頁 50 筆）]
 import { mkdir, writeFile, access } from "node:fs/promises";
 
 const CACHE = new URL("../../.reco-cache/", import.meta.url);

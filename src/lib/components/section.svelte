@@ -2,11 +2,9 @@
     import type { Snippet } from "svelte";
     import { anchorId } from "$lib/anchor";
 
-    // 速查表的區塊：粗線下的標題，右邊是收錄數量；標題同時是錨點
     let {
         title,
         count = undefined as number | undefined,
-        /** 內容緊貼標題的粗線（例如首頁的清單本身就是表格） */
         flush = false,
         children,
     }: {

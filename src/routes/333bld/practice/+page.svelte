@@ -28,19 +28,15 @@
 
     let mode = $state<Mode>("scramble");
 
-    // ── 打亂 ────────────────────────────────────────────
     let scramble = $state("");
 
     async function newScramble() {
-        // cubing 的打亂產生器會開 web worker，只能在瀏覽器端載入
         const { randomScrambleForEvent } = await import("cubing/scramble");
         scramble = (await randomScrambleForEvent("333")).toString();
     }
 
     onMount(newScramble);
 
-    // 第一個循環如果是從緩衝塊開始，就把頭尾兩個字母（緩衝塊本身）加上括號。
-    // 回傳新物件，不改動 findCycle 自己的陣列。
     function findCycleMarked(faces: number[][][], buffer: string, stickers: 2 | 3) {
         const result = findCycle(faces, buffer, stickers);
         const first = result.cyclesCode[0];
@@ -59,11 +55,9 @@
         { title: "角塊", buffer: CORNER_BUFFER, flip: "CO", ...findCycleMarked(faces, CORNER_BUFFER, 3) },
     ]);
 
-    // ── 字母配對 ────────────────────────────────────────
     let pairType = $state<PieceType>("edge");
     let pair = $state("");
 
-    // 抽兩個不同、也不在同一塊上的字母，並且避開緩衝塊的貼紙
     function newPair() {
         const buffer = pairType === "edge" ? EDGE_BUFFER : CORNER_BUFFER;
         const groups = pieceLetterGroups(pairType);
@@ -84,7 +78,6 @@
         newPair();
     }
 
-    // ── 貼紙辨認 ────────────────────────────────────────
     let recogType = $state<PieceType>("edge");
     let recogItem = $state<RecogItem | null>(null);
     let revealed = $state(false);
@@ -94,7 +87,6 @@
         revealed = false;
     }
 
-    // 第一下顯示答案，第二下換下一張
     function advanceRecog() {
         if (!revealed) revealed = true;
         else newRecog();
@@ -115,7 +107,6 @@
         if (e.key !== " " || e.repeat || e.metaKey || e.ctrlKey || e.altKey) return;
         const target = e.target as HTMLElement | null;
         if (target?.closest("input, textarea, [contenteditable], [role=dialog]")) return;
-        // 擋掉聚焦中按鈕自己的空白鍵觸發，動作只執行一次
         e.preventDefault();
         if (mode === "scramble") newScramble();
         else if (mode === "pair") newPair();
@@ -227,7 +218,6 @@
                     <span class="text-[clamp(3.5rem,11vw,6rem)] font-extrabold leading-none">{recogItem.letter}</span>
                     <span class="text-[15px] tabular-nums text-neutral-600">{recogItem.location}</span>
                 {:else}
-                    <!-- 還沒翻開：虛線框，跟圖解載入中的「還沒貼上的圖」同一個語彙 -->
                     <span class="text-[clamp(3.5rem,11vw,6rem)] leading-none" aria-hidden="true">
                         <span class="block h-[1em] w-[0.72em] rounded-md border-2 border-dashed border-neutral-400"></span>
                     </span>

@@ -1,5 +1,3 @@
-// Speffz 字母與循環追蹤（盲解）。從 solv 搬來，邏輯不變。
-
 type Coordinate = {
     [key: string]: number[][]
 }
@@ -48,7 +46,6 @@ let coordMap: Coordinate = {
     'BL': [[4, 1, 2], [1, 1, 0]],
     'FR': [[2, 1, 2], [3, 1, 0]],
     'BR': [[4, 1, 0], [3, 1, 2]],
-    // CORNERS
     'UBL': [[0, 0, 0], [4, 0, 2], [1, 0, 0]],
     'UBR': [[0, 0, 2], [4, 0, 0], [3, 0, 2]],
     'UFR': [[0, 2, 2], [2, 0, 2], [3, 0, 0]],
@@ -81,7 +78,6 @@ let coordMap: Coordinate = {
 }
 
 export let letterCode = {
-    // EDGES
     'UB': 'A',
     'UR': 'B',
     'UF': 'C',
@@ -112,7 +108,6 @@ export let letterCode = {
     'DB': 'W',
     'DL': 'X',
 
-    // CORNERS
     'UBL': 'A',
     'UBR': 'B',
     'UFR': 'C',
@@ -151,11 +146,9 @@ function permute(str: string): string[] {
     for (let i = 0; i < str.length; i++) {
         let char = str[i];
 
-        // recursive call to get permutations of remaining chars 
         let remaining = str.slice(0, i) + str.slice(i + 1);
         let remainingPermuted = permute(remaining);
 
-        // prepend char to each permutation of remaining chars
         for (let j = 0; j < remainingPermuted.length; j++) {
             permutations.push(char + remainingPermuted[j]);
         }
@@ -275,9 +268,6 @@ export function findCycle(matrix: number[][][], buffer: string, stickers: 2 | 3)
     return ret
 }
 
-// Groups the speffz letters by the physical piece they sit on: each returned
-// array is the letters of one piece (2 per edge, 3 per corner). Two letters
-// from the same array are stickers of the same piece and must never be paired.
 export function pieceLetterGroups(type: "edge" | "corner"): string[][] {
     const stickers = type === "edge" ? 2 : 3;
     const groups: { [key: string]: string[] } = {};

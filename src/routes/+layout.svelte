@@ -14,7 +14,6 @@
             : SITE_TITLE,
     );
 
-    // 手機版目錄：點了任何連結就收起
     let indexOpen = $state(false);
 </script>
 
@@ -22,7 +21,6 @@
     <title>{documentTitle}</title>
 </svelte:head>
 
-<!-- 頁首總高 3.5rem（含底線）；目錄的 sticky 位置與 html 的 scroll-padding 都以此為準 -->
 <header class="sticky top-0 z-20 h-14 border-b border-ink bg-paper print:hidden">
     <div class="mx-auto flex h-full max-w-[90rem] items-center justify-between gap-4 px-5">
         <a href="/" class="truncate text-[15px] font-bold">{SITE_TITLE}</a>

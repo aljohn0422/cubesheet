@@ -1,10 +1,8 @@
 <script lang="ts">
     import { STICKER_COLORS } from "$lib/blindfold/cube";
 
-    // 打亂後的展開圖：U 在上，L F R B 一排，D 在下
     let { faces }: { faces: number[][][] } = $props();
 
-    // 展開圖 4 欄 × 3 列中，每一面放的位置（null 是空格）
     const layout = [null, 0, null, null, 1, 2, 3, 4, null, 5, null, null];
 </script>
 
